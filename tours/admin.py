@@ -1,4 +1,8 @@
 from django.contrib import admin
+from django_jalali.admin.filters import JDateFieldListFilter
+from django_jalali.admin.widgets import AdminjDateWidget  # ← تغییر کرد
+from django_jalali.db import models as jmodels  
+import django_jalali.admin as jadmin
 from .models import Location , Tour
 # Register your models here.
 
@@ -33,6 +37,10 @@ class TourAdmin(admin.ModelAdmin):
         'hotel',
         'slug',
     )
+    
+    formfield_overrides = {
+        jmodels.jDateField: {'widget': AdminjDateWidget},
+    }
 
     prepopulated_fields = {
         'slug': ('title',)
