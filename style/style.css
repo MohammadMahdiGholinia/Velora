@@ -12,3 +12,22 @@
   font-style: normal;
   font-display: swap;
 }
+
+#preloader {
+  background: #ffffff url(../assets/images/preloader.svg) no-repeat center center;
+  background-size: 20% ;
+  height: 100vh;
+  width: 100%;
+  position:fixed ;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+
+}
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+}
