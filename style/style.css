@@ -15,7 +15,7 @@
 
 #preloader {
   background: #ffffff url(../assets/images/preloader.svg) no-repeat center center;
-  background-size: 20% ;
+  background-size: 30% ;
   height: 100vh;
   width: 100%;
   position:fixed ;
