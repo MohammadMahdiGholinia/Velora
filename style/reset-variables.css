@@ -37,7 +37,7 @@
    */
 
   /* font family */
-  --ff-main: "Vazir" , sans-serif;
+  --ff-main: "Vazir", sans-serif;
 
   /* font size */
   --fs-1: 4.2rem;
@@ -50,7 +50,7 @@
 
   /* font weight */
   --fw-bold: 700;
-  --fw-semiBold: 600;
+  --fw-semibold: 600;
   --fw-medium: 500;
 
   /**
@@ -132,7 +132,7 @@ html {
 body {
   background-color: var(--bg-lavender-blush);
   color: var(--text-granite-gray);
-  font-size: var(--fontSize-6);
+  font-size: var(--fs-6);
   line-height: 1.8;
 
 }
