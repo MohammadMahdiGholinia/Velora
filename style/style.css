@@ -342,4 +342,67 @@
 
 }
 
+@media (min-width: 1200px) {
 
+  /**
+    * custom properties
+    */
+  :root {
+    --fs-1: 6.4rem;
+    --fs-2: 4.8rem;
+    --fs-3: 3rem;
+
+  }
+
+
+
+  /**
+  * Reused style
+  */
+  
+  .container {
+    max-width: 1150px;
+  }
+
+  /**
+  * Header
+  */
+
+  .header .logo img { width: 180px;}
+
+  .navbar-list { gap: 50px;}
+
+  .header-action { gap: 40px;}
+  
+
+
+
+}
+
+@media (min-width: 1400px) {
+
+  /**
+    * custom properties
+    */
+  :root {
+    --fs-1: 7.2rem;
+
+  }
+
+
+
+  /**
+  * Reused style
+  */
+  
+  .container {
+    max-width: 1350px;
+  }
+
+  /**
+  * Header
+  */
+
+  .navbar-list { gap: 70px;}
+
+}
