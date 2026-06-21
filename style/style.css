@@ -86,7 +86,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-direction: row-reverse;
+  gap: 40px;
+  /* flex-direction: row-reverse; */
 }
 
 .header {
@@ -142,7 +143,7 @@
   
   padding: 30px 16px;
   display: flex;
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
   justify-content: space-between;
   align-items: center;
 }
@@ -165,11 +166,12 @@
 .navbar-link::before {
   content: "";
   position: absolute;
-  width: 5px;
+  width: 6px;
   height: 12px;
+  right: -10px;
   background-color: var(--bg-majorelle-blue);
   top: 50%;
-  right: -10px;
+  
   transform: translateY(-50%);
   border-radius: 5px;
   opacity: 0;
@@ -187,7 +189,7 @@
   padding-block-start: 20px;
   border-block-start: 1px solid var(--border-gainsboro);
   display: flex;
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
   justify-content: space-around;
   align-items: center ;
  }
@@ -217,3 +219,127 @@
   visibility: visible;
   opacity: 0.5;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+  * Media Queries
+  */
+
+@media (min-width: 575px) {
+
+  /**
+  * Reused style
+  */
+  
+  .container {
+    max-width: 540px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+
+  /**
+    *Header
+    */
+
+    .navbar {
+      padding-inline: 40px;
+      padding-block-start: 40px;
+    }
+
+}
+
+
+@media (min-width: 768px) {
+
+  /**
+  * custom properties
+  */
+  :root {
+    --fs-1: 4.8rem;
+    --fs-2: 4rem;
+    --fs-3: 2.8rem;
+    --fs-4: 2.6rem;
+    --fs-5: 2.2rem;
+    --fs-6: 1.8rem;
+    --fs-7: 1.6rem;
+  }
+
+  /**
+  * Reused style
+  */
+  
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+
+  /**
+  * Reused style
+  */
+  
+  .container {
+    max-width: 950px;
+  }
+
+  /**
+  * Header
+  */
+  
+  .nav-toggle-btn,
+  .navbar-top,
+  .overlay {
+    display: none;
+  }
+
+  .navbar,
+  .navbar.active {
+    all: unset;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  .navbar-list {
+    margin-block-start: 0;
+    display: flex;
+    gap: 30px;
+    margin-inline: auto ;
+  }
+
+  .navbar-link:is(:hover, :focus-visible, .active) { transform: unset;}
+
+  .navbar-link::before {
+    width: 12px;
+    height: 3px;
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .header-action {
+    border: none;
+    padding-block-start: 0;
+    gap: 30px;
+  }
+
+  .header.active { padding-block: 15px;}
+
+
+}
+
+
