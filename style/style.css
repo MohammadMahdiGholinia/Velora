@@ -167,9 +167,10 @@
 .navbar-link::before {
   content: "";
   position: absolute;
-  width: 6px;
+  width: 4px;
   height: 12px;
-  right: -10px;
+  right: auto;
+  left: 0;
   background-color: var(--bg-majorelle-blue);
   top: 50%;
   
@@ -326,7 +327,7 @@
 
   .navbar-link::before {
     width: 12px;
-    height: 3px;
+    height: 4px;
     top: auto;
     bottom: 0;
     left: 50%;
