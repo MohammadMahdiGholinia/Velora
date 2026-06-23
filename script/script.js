@@ -132,3 +132,19 @@ function changeHero() {
 
 setInterval(changeHero , 5000);
 changeHero();
+
+
+const monthInput = document.getElementById("month-input");
+const monthModal = document.getElementById("month-modal");
+const monthButtons = document.querySelectorAll(".month-button");
+
+monthInput.addEventListener("click", () => {
+  monthModal.classList.add("active");
+});
+
+monthButtons.forEach( (button) => {
+  button.addEventListener("click", () => {
+    monthInput.value = button.textContent;
+    monthModal.classList.remove("active");
+  });
+});
