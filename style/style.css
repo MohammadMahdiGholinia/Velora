@@ -22,6 +22,28 @@
 
 }
 
+.login-btn {
+  height: 50px;
+  color: var(--text-gunmetal);
+  transition: var(--transition-1);
+  padding-inline: 30px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  max-width: max-content;
+  transition: var(--transition-1);
+}
+
+ .login-btn:is(:hover, :focus-visible)
+  {
+  background-color: #fff;
+   opacity: 0.8;
+   box-shadow: var(--shadow-2);
+   }
+
+
 .btn {
   height: 50px;
   color: var(--text-white);
@@ -118,6 +140,7 @@
 .nav-toggle-btn { font-size: 3.2rem; }
 
 .navbar {
+  padding-bottom: 10px;
   position: fixed;
   top: 0;
   right: -350px;
@@ -166,9 +189,10 @@
 .navbar-link::before {
   content: "";
   position: absolute;
-  width: 6px;
+  width: 4px;
   height: 12px;
-  right: -10px;
+  right: auto;
+  left: 0;
   background-color: var(--bg-majorelle-blue);
   top: 50%;
   
@@ -194,14 +218,6 @@
   align-items: center ;
  }
 
- .login-btn {
-  color: var(--text-gunmetal);
-  font-size: var(--fs-7);
-  font-weight: var(--fw-medium);
-  transition: var(--transition-1);
- }
-
- .login-btn:is(:hover, :focus-visible) { opacity: 0.8; }
 
  .overlay {
   position: fixed;
@@ -331,7 +347,7 @@
   */
   
   .container {
-    max-width: 720px;
+    max-width: 720px; 
   }
 }
 @media (min-width: 992px) {
@@ -373,7 +389,7 @@
 
   .navbar-link::before {
     width: 12px;
-    height: 3px;
+    height: 4px;
     top: auto;
     bottom: 0;
     left: 50%;
@@ -390,4 +406,67 @@
 
 }
 
+@media (min-width: 1200px) {
 
+  /**
+    * custom properties
+    */
+  :root {
+    --fs-1: 6.4rem;
+    --fs-2: 4.8rem;
+    --fs-3: 3rem;
+
+  }
+
+
+
+  /**
+  * Reused style
+  */
+  
+  .container {
+    max-width: 1150px;
+  }
+
+  /**
+  * Header
+  */
+
+  .header .logo img { width: 180px;}
+
+  .navbar-list { gap: 50px;}
+
+  .header-action { gap: 40px;}
+  
+
+
+
+}
+
+@media (min-width: 1400px) {
+
+  /**
+    * custom properties
+    */
+  :root {
+    --fs-1: 7.2rem;
+
+  }
+
+
+
+  /**
+  * Reused style
+  */
+  
+  .container {
+    max-width: 1350px;
+  }
+
+  /**
+  * Header
+  */
+
+  .navbar-list { gap: 70px;}
+
+}

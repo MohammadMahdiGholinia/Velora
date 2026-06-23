@@ -9,9 +9,9 @@
   /* backgroud colors */
   --bg-white: hsl(0, 0%, 100%);
   --bg-black-alpha-20: hsla(0, 0%, 0%, 0.2);
-  --bg-lavender-blush: hsl(0, 100%, 98%);
-  --bg-majorelle-blue: hsl(249, 95%, 63%);
-  --bg-ocean-blue: hsl(249, 63%, 54%);
+  --bg-lavender-blush: #EBF3FA;
+  --bg-majorelle-blue: #1F69E0 ;
+  --bg-ocean-blue: #477EE6 ;
   --bg-majorelle-blue-alpha-5: hsla(249, 95%, 63%, 0.05);
   --bg-misty-rose: hsl(0, 100%, 95%);
   --bg-red-salsa: hsl(357, 94%, 63%);
