@@ -73,38 +73,44 @@
            </div> 
            
            <div class="hero-search container">
-            <div class="hero-search-box">
+            <form class="hero-search-box" id="search-form">
+
+              <div class="hero-field">
+                <label for="origin-input"> مبدا</label>
+                <input id="origin-input" name="origin" type="text" placeholder="مبدا">
+              </div>
 
               <div class="hero-field">
                 <label for="destination-input"> مقصد</label>
-                <input id="destination-input" type="text" placeholder="کجا می‌خوای بری؟">
+                <input id="destination-input" name="destination" type="text" placeholder="کجا می‌خوای بری؟">
               </div>
+              
               <div class="hero-field">
                 <label for="month-input"> تاریخ</label>
-                <input id="month-input" type="text">
+                <input id="month-input" name="month" type="text">
 
                 
               </div>
               
-              <button class="search-btn btn"> جستجو</button>
+              <button type="submit" class="search-btn btn"> جستجو</button>
 
               <div id="month-modal" class="month-modal">
-                <button class="month-button"> فروردین</button>
-                <button class="month-button"> اردیبهشت</button>
-                <button class="month-button"> خرداد</button>
-                <button class="month-button"> تیر</button>
-                <button class="month-button"> مرداد</button>
-                <button class="month-button"> شهریور</button>
-                <button class="month-button"> مهر</button>
-                <button class="month-button"> آبان</button>
-                <button class="month-button"> آذر</button>
-                <button class="month-button"> دی</button>
-                <button class="month-button"> بهمن</button>
-                <button class="month-button"> اسفند</button>
+                <button class="month-button" data-month="01"> فروردین</button>
+                <button class="month-button" data-month="02"> اردیبهشت</button>
+                <button class="month-button" data-month="03"> خرداد</button>
+                <button class="month-button" data-month="04"> تیر</button>
+                <button class="month-button" data-month="05"> مرداد</button>
+                <button class="month-button" data-month="06"> شهریور</button>
+                <button class="month-button" data-month="07"> مهر</button>
+                <button class="month-button" data-month="08"> آبان</button>
+                <button class="month-button" data-month="09"> آذر</button>
+                <button class="month-button" data-month="10"> دی</button>
+                <button class="month-button" data-month="11"> بهمن</button>
+                <button class="month-button" data-month="12"> اسفند</button>
               </div>
 
           
-            </div>
+            </form>
            </div>
            
 
