@@ -160,7 +160,7 @@ monthButtons.forEach( (button) => {
 
 const specialTours= [
   {
-    image: "./assets./images/special-tours/international/antalya",
+    image: "./assets/images/specialtours/international/antalya.jpg",
     title: "تور ترکیه، آنتالیا",
     duration: "4 روز و 3 شب",
     hotel: "هتل 4 ستاره",
@@ -168,7 +168,7 @@ const specialTours= [
     price: "100"
   },
   {
-    image: "./assets/images/special-tours/international/bankok",
+    image: "./assets/images/specialtours/international/bankok.jpg",
     title: "تور تایلند، بانکوک",
     duration: "7 روز و 6 شب",
     hotel: "هتل 5 ستاره",
@@ -176,7 +176,7 @@ const specialTours= [
     price: "200"
   },
   {
-    image: "./assets/images/special-tours/international/dubai",
+    image: "./assets/images/specialtours/international/dubai.jpg",
     title: "تور امارات، دوبی",
     duration: "7 روز و 6 شب",
     hotel: "هتل 5 ستاره",
@@ -184,7 +184,7 @@ const specialTours= [
     price: "300"
   },
   {
-    image: "./assets/images/special-tours/international/istanbul",
+    image: "./assets/images/specialtours/international/istanbul.jpg",
     title: "تور ترکیه، استانبول",
     duration: "5 روز و 4 شب",
     hotel: "هتل 6 ستاره",
@@ -192,7 +192,7 @@ const specialTours= [
     price: "400"
   },
   {
-    image: "./assets/images/special-tours/international/paris",
+    image: "./assets/images/specialtours/international/paris.jpg",
     title: "تور فرانسه، پاریس",
     duration: "9 روز و 8 شب",
     hotel: "هتل 5 ستاره",
@@ -200,7 +200,7 @@ const specialTours= [
     price: "500"
   },
   {
-    image: "./assets/images/special-tours/international/venice",
+    image: "./assets/images/specialtours/international/venice.jpg",
     title: "تور ونیز، ایتالیا",
     duration: "7 روز و 6 شب",
     hotel: "هتل 5 ستاره",
