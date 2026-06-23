@@ -55,5 +55,33 @@ window.addEventListener("scroll", () => {
 );
 
 
+// Hero Section 
+
+const heroImages = [ 
+  { 
+    image:"./assets/images/paris1.jpg",
+    title: "هر سفر، یک داستان تازه",
+    subTitle: "تورهای داخلی و خارجی رو جستجو کن و بهترین تجربه سفر رو بساز"
+  },
+
+  {
+     image:"./assets/images/paris2.jpg",
+     title: "جهان بزرگ‌تر از چیزی‌ست که فکر می‌کنی",
+     subTitle: "وقتشه ببینی اون بیرون چه چیزهایی منتظر توئه."
+  },
+
+  { 
+    image:"./assets/images/paris3.jpg",
+    title: "مقصدتو پیدا کن",
+    subTitle: "جستجو کن، انتخاب کن، سفر کن." 
+  },
+
+  {
+   image:"./assets/images/paris4.jpg" ,
+   title: "سفرهای خاص برای آدم‌های خاص",
+   subTitle: "تجربه‌هایی فراتر از یک سفر معمولی."
+  }
+  
+  ];
 
 
