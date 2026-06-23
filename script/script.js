@@ -133,7 +133,7 @@ function changeHero() {
 setInterval(changeHero , 5000);
 changeHero();
 
-
+// month modal
 const monthInput = document.getElementById("month-input");
 const monthModal = document.getElementById("month-modal");
 const monthButtons = document.querySelectorAll(".month-button");
@@ -154,3 +154,98 @@ monthButtons.forEach( (button) => {
   }
 });
 });
+
+
+// Special tours
+
+const specialTours= [
+  {
+    image: "./assets./images/special-tours/international/antalya",
+    title: "تور ترکیه، آنتالیا",
+    duration: "4 روز و 3 شب",
+    hotel: "هتل 4 ستاره",
+    stars: 4,
+    price: "100"
+  },
+  {
+    image: "./assets/images/special-tours/international/bankok",
+    title: "تور تایلند، بانکوک",
+    duration: "7 روز و 6 شب",
+    hotel: "هتل 5 ستاره",
+    stars: 5,
+    price: "200"
+  },
+  {
+    image: "./assets/images/special-tours/international/dubai",
+    title: "تور امارات، دوبی",
+    duration: "7 روز و 6 شب",
+    hotel: "هتل 5 ستاره",
+    stars: 5,
+    price: "300"
+  },
+  {
+    image: "./assets/images/special-tours/international/istanbul",
+    title: "تور ترکیه، استانبول",
+    duration: "5 روز و 4 شب",
+    hotel: "هتل 6 ستاره",
+    stars: 6,
+    price: "400"
+  },
+  {
+    image: "./assets/images/special-tours/international/paris",
+    title: "تور فرانسه، پاریس",
+    duration: "9 روز و 8 شب",
+    hotel: "هتل 5 ستاره",
+    stars: 5,
+    price: "500"
+  },
+  {
+    image: "./assets/images/special-tours/international/venice",
+    title: "تور ونیز، ایتالیا",
+    duration: "7 روز و 6 شب",
+    hotel: "هتل 5 ستاره",
+    stars: 5,
+    price: "600"
+  },
+];
+
+
+const toursGrid = document.querySelector(".tours-grid");
+
+function renderTours() {
+  toursGrid.innerHTML = ``;
+
+  specialTours.forEach((tour) => {
+
+    const card = document.createElement("div");
+    card.classList.add("tour-card");
+
+    card.innerHTML= `
+    <div class="tour-card-image">
+        <img src="${tour.image}" alt="${tour.title}">
+      </div>
+
+      <div class="tour-card-content">
+        <h3>${tour.title}</h3>
+
+        <div class="tour-card-meta">
+          <span> ${tour.duration} </span>
+          <span>⭐ ${tour.hotel}</span>
+        </div>
+
+        <div class="tour-card-footer">
+          <span class="tour-card-price">${tour.price}€</span>
+          <button class="book-btn">رزرو</button>
+        </div>
+      </div>
+    `;
+
+    toursGrid.appendChild(card);
+
+
+
+  });
+
+}
+
+renderTours();
