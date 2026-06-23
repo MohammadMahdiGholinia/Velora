@@ -174,7 +174,7 @@ const specialTours= [
     title: "تور تایلند، بانکوک",
     duration: "7 روز و 6 شب",
     hotel: "هتل 5 ستاره",
-    stars: 5,
+    stars: 4,
     price: "200"
   },
   {
@@ -182,7 +182,7 @@ const specialTours= [
     title: "تور امارات، دوبی",
     duration: "7 روز و 6 شب",
     hotel: "هتل 5 ستاره",
-    stars: 5,
+    stars: 3,
     price: "300"
   },
   {
@@ -190,7 +190,7 @@ const specialTours= [
     title: "تور ترکیه، استانبول",
     duration: "5 روز و 4 شب",
     hotel: "هتل 6 ستاره",
-    stars: 6,
+    stars: 4,
     price: "400"
   },
   {
@@ -203,7 +203,7 @@ const specialTours= [
   },
   {
     image: "./assets/images/specialtours/international/venice.jpg",
-    title: "تور ونیز، ایتالیا",
+    title: "تور ایتالیا، ونیز",
     duration: "7 روز و 6 شب",
     hotel: "هتل 5 ستاره",
     stars: 5,
@@ -211,6 +211,21 @@ const specialTours= [
   },
 ];
 
+
+function generateStars(stars) {
+  let starsHTML = ``;
+
+  for (let i=1; i<=5; i++) {
+    if (i<=stars) {
+      starsHTML += `<span class="star filled">★</span>`;
+    }
+    else {
+      starsHTML += `<span class="star empty">☆</span>`;
+    }
+  }
+
+  return starsHTML;
+}
 
 const toursGrid = document.querySelector(".tours-grid");
 
@@ -232,7 +247,7 @@ function renderTours() {
 
         <div class="tour-card-meta">
           <span> ${tour.duration} </span>
-          <span>⭐ ${tour.hotel}</span>
+          <div class="tour-card-stars"> ${generateStars(tour.stars)}</div>
         </div>
 
         <div class="tour-card-footer">
