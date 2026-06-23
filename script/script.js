@@ -148,11 +148,13 @@ monthButtons.forEach( (button) => {
     monthModal.classList.remove("active");
   });
   
-  document.addEventListener("click", (e) => {
+  
+});
+
+document.addEventListener("click", (e) => {
   if (!e.target.closest(".hero-field")) {
     monthModal.classList.remove("active");
   }
-});
 });
 
 
@@ -235,7 +237,7 @@ function renderTours() {
 
         <div class="tour-card-footer">
           <span class="tour-card-price">${tour.price}€</span>
-          <button class="book-btn">رزرو</button>
+          <button class="card-book-btn">رزرو</button>
         </div>
       </div>
     `;
