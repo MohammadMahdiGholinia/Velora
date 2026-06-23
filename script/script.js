@@ -57,7 +57,7 @@ window.addEventListener("scroll", () => {
 
 // Hero Section 
 
-const heroImages = [ 
+const heroBgs = [ 
   { 
     image:"./assets/images/paris1.jpg",
     title: "هر سفر، یک داستان تازه",
@@ -85,3 +85,40 @@ const heroImages = [
   ];
 
 
+
+const bg1 = document.querySelector(".hero-bg-1");
+const bg2 = document.querySelector(".hero-bg-2");
+const heroTitle = document.querySelector(".hero-title");
+const heroSubtitle = document.querySelector(".hero-subtitle");
+
+
+let count = 0;
+let activeBg = bg1;
+let inactiveBg= bg2;
+
+
+function changeHero() {
+  
+  const currentBg = heroBgs[count];
+  count = (count +1) % heroBgs.length;
+  
+
+  [activeBg, inactiveBg] = [inactiveBg, activeBg]
+
+  inactiveBg.style.backgroundImage =`url(${currentBg.image})`;
+
+  inactiveBg.classList.add("active");
+  inactiveBg.classList.remove("inactive");
+
+  activeBg.classList.add("inactive");
+  activeBg.classList.remove("active");
+
+  heroTitle.textContent = currentBg.title;
+  heroSubtitle.textContent = currentBg.subTitle;
+
+  
+}
+
+
+setInterval(changeHero , 5000);
+changeHero();
