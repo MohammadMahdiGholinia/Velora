@@ -303,6 +303,7 @@
   transform: translateY(10px);
   }
 
+  /* Hero Search */
 .hero-search { 
   position: absolute;
   left: 50%;
@@ -415,11 +416,70 @@
 
 
 
+/* Special Tours */
 
+.special-tours {
+  margin-top: 80px;
+}
 
+.tours-grid {
+  
 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
 
+.tour-card {
+  background: var(--bg-white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+  transition: 0.3s;
+}
 
+.tour-card:hover {
+  transform: translateY(-5px);
+}
+
+.tour-card-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+} 
+
+.tour-card-content {
+  padding: 15px;
+}
+
+.tour-card-meta {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: var(--fs-7);
+}
+
+.tour-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tour-card-price {
+  font-weight: bold;
+  color: var(--text-light-coral);
+
+}
+
+.card-book-btn {
+  background: var(--bg-majorelle-blue);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+
+}
 
 
 
