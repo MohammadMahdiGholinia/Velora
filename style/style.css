@@ -23,6 +23,8 @@
 }
 
 .login-btn {
+  background-color: #b4b4b4;
+  width: 100px;
   height: 50px;
   color: var(--text-white);
   transition: var(--transition-1);
@@ -45,6 +47,7 @@
 
 
 .btn {
+  width: 100px;
   height: 50px;
   color: var(--text-white);
   padding-inline: 30px;
@@ -157,6 +160,7 @@
 }
 
 .navbar.active {
+  background-color: rgb(33, 56, 105);
   transform: translateX(-350px);
   transition-duration: 500ms;
   visibility: visible;
@@ -250,55 +254,112 @@
   text-align: center;
   } 
      
-  .hero-bg {
-    z-index: 0;
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center; 
-    transition: opacity 1200ms ease, transform 2500ms ease;
-    transform: scale(1.08);
-   }
+.hero-bg {
+  z-index: 0;
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center; 
+  transition: opacity 1200ms ease, transform 2500ms ease;
+  transform: scale(1.08);
+ }
+
+.hero-bg.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1; 
+  }
 
 
-  .hero-bg.active {
-    opacity: 1;
-    transform: scale(1);
-    z-index: 1; 
-    }
+.hero-bg.inactive {
+  opacity: 0;
+  z-index: 0;
+ } 
 
-
-  .hero-bg.inactive {
-    opacity: 0;
-    z-index: 0;
-   } 
-
-  .hero-overlay { 
-    z-index: 1;
-    position: absolute; 
-    inset: 0;
-    background: rgba(0,0,0,0.45); 
-
+.hero-overlay { 
+  z-index: 1;
+  position: absolute; 
+  inset: 0;
+  background: rgba(0,0,0,0.45); 
   } 
   
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    color: white;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+
+  }
+
+.hero-title,
+.hero-subtitle {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  }
+
+.hero-title.hide,
+.hero-subtitle.hide {
+
+  opacity: 0;
+  transform: translateY(10px);
+  }
+
+.hero-search {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: 2;
+    }
+
+.hero-search-box {
+      
+  background: white;
+  display: flex;
+  gap: 15px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(254, 251, 251, 0.15);
+  align-items: end;
+    }
+
+.hero-field {
+  flex:1;
+  display: flex;
+  flex-direction: column;
+    }
+
+.hero-field label {
+
+  font-size: 12px;
+  margin-bottom: 6px;
+  color: #58dce0;
+
 
     }
 
-    .hero-title,
-    .hero-subtitle {
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
+.field input {
+  color: rgb(225, 148, 148);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  outline: none;
+}
 
-    .hero-title.hide,
-    .hero-subtitle.hide {
+.search-btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 12px;
+  background: #5b5df7;
+  color: white;
+  cursor: pointer;
+}
 
-      opacity: 0;
-      transform: translateY(10px);
-    }
+.month-modal.hidden {
+  display: none;
+}
+
+
 
 
 
