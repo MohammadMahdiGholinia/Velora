@@ -459,6 +459,23 @@
   font-size: var(--fs-7);
 }
 
+.tour-card-stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.star.filled {
+  color: #f5b301;
+  font-size: var(--fs-4);
+  
+}
+.star.empty {
+  color: #d6d6d6;
+  font-size: var(--fs-4);
+  
+}
+
 .tour-card-footer {
   display: flex;
   justify-content: space-between;
