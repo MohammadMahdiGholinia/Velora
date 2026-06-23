@@ -243,6 +243,11 @@
   position: relative;
   height: 80vh;
   overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   } 
      
   .hero-bg {
@@ -259,14 +264,14 @@
   .hero-bg.active {
     opacity: 1;
     transform: scale(1);
-      z-index: 1; 
+    z-index: 1; 
     }
 
 
   .hero-bg.inactive {
-     opacity: 0;
-      z-index: 0;
-     } 
+    opacity: 0;
+    z-index: 0;
+   } 
 
   .hero-overlay { 
     z-index: 1;
@@ -280,8 +285,19 @@
     position: relative;
     z-index: 2;
     color: white;
-    top: 50%;
-    transform: translateY(-50%); 
+
+    }
+
+    .hero-title,
+    .hero-subtitle {
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .hero-title.hide,
+    .hero-subtitle.hide {
+
+      opacity: 0;
+      transform: translateY(10px);
     }
 
 

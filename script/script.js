@@ -98,7 +98,7 @@ let inactiveBg= bg2;
 
 
 function changeHero() {
-  
+
   const currentBg = heroBgs[count];
   count = (count +1) % heroBgs.length;
   
@@ -113,8 +113,18 @@ function changeHero() {
   activeBg.classList.add("inactive");
   activeBg.classList.remove("active");
 
+  heroTitle.classList.add("hide");
+  heroSubtitle.classList.add("hide");
+
+  setTimeout(() => {
+    
   heroTitle.textContent = currentBg.title;
   heroSubtitle.textContent = currentBg.subTitle;
+
+  heroTitle.classList.remove("hide");
+  heroSubtitle.classList.remove("hide");
+
+  }, 600);
 
   
 }
