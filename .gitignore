@@ -10,5 +10,5 @@ media/
 # Database
 db.sqlite3
 
-# Environment variables (اگر بعداً استفاده کردی)
+# Environment variables 
 .env
