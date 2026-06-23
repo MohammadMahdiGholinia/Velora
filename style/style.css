@@ -24,7 +24,7 @@
 
 .login-btn {
   height: 50px;
-  color: var(--text-gunmetal);
+  color: var(--text-white);
   transition: var(--transition-1);
   padding-inline: 30px;
   border-radius: var(--radius-pill);
@@ -179,7 +179,7 @@
 
 .navbar-link {
   position: relative;
-  color: var(--text-gunmetal);
+  color: var(--text-white);
   font-size: var(--fs-7);
   font-weight: var(--fw-medium);
   padding-block: 8px;
