@@ -147,4 +147,10 @@ monthButtons.forEach( (button) => {
     monthInput.value = button.textContent;
     monthModal.classList.remove("active");
   });
+  
+  document.addEventListener("click", (e) => {
+  if (!e.target.closest(".hero-field")) {
+    monthModal.classList.remove("active");
+  }
+});
 });
