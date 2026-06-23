@@ -11,7 +11,7 @@
   --bg-black-alpha-20: hsla(0, 0%, 0%, 0.2);
   --bg-lavender-blush: #EBF3FA;
   --bg-majorelle-blue: #1F69E0 ;
-  --bg-ocean-blue: #477EE6 ;
+  --bg-ocean-blue: #C0D3F6 ;
   --bg-majorelle-blue-alpha-5: hsla(249, 95%, 63%, 0.05);
   --bg-misty-rose: hsl(0, 100%, 95%);
   --bg-red-salsa: hsl(357, 94%, 63%);
@@ -135,6 +135,7 @@ body {
   color: var(--text-granite-gray);
   font-size: var(--fs-6);
   line-height: 1.8;
+  
 
 }
 body.nav-active {
