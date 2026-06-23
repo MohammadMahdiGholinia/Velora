@@ -66,7 +66,7 @@ const heroBgs = [
 
   {
      image:"./assets/images/paris2.jpg",
-     title: "جهان بزرگ‌تر از چیزی‌ست که فکر می‌کنی",
+     title: "دنیا بزرگ‌تر از چیزی‌ست که فکر می‌کنی",
      subTitle: "وقتشه ببینی اون بیرون چه چیزهایی منتظر توئه."
   },
 
@@ -165,7 +165,6 @@ const specialTours= [
     image: "./assets/images/specialtours/international/antalya.jpg",
     title: "تور ترکیه، آنتالیا",
     duration: "4 روز و 3 شب",
-    hotel: "هتل 4 ستاره",
     stars: 4,
     price: "100"
   },
@@ -173,7 +172,6 @@ const specialTours= [
     image: "./assets/images/specialtours/international/bankok.jpg",
     title: "تور تایلند، بانکوک",
     duration: "7 روز و 6 شب",
-    hotel: "هتل 5 ستاره",
     stars: 4,
     price: "200"
   },
@@ -181,7 +179,6 @@ const specialTours= [
     image: "./assets/images/specialtours/international/dubai.jpg",
     title: "تور امارات، دوبی",
     duration: "7 روز و 6 شب",
-    hotel: "هتل 5 ستاره",
     stars: 3,
     price: "300"
   },
@@ -197,7 +194,6 @@ const specialTours= [
     image: "./assets/images/specialtours/international/paris.jpg",
     title: "تور فرانسه، پاریس",
     duration: "9 روز و 8 شب",
-    hotel: "هتل 5 ستاره",
     stars: 5,
     price: "500"
   },
@@ -205,7 +201,6 @@ const specialTours= [
     image: "./assets/images/specialtours/international/venice.jpg",
     title: "تور ایتالیا، ونیز",
     duration: "7 روز و 6 شب",
-    hotel: "هتل 5 ستاره",
     stars: 5,
     price: "600"
   },
