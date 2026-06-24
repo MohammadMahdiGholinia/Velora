@@ -3,22 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
+  <link rel="stylesheet" href="../style/reset-variables.css">
   <link rel="stylesheet" href="./auth.css">
+  
 </head>
 <body>
 
 <div class="auth-container">
 
-  <form id="login-form" class="auth-form">
+  <form id="auth-form" class="auth-form">
 
     <h2>ورود</h2>
 
     <input type="tel" name="phone" placeholder="شماره تلفن" required>
+    <div class="error" id="phone-error"></div>
     <input type="password" name="password" placeholder="رمز عبور" required>
+    <div class="error" id="password-error"></div>
 
     <button class="submit" type="submit">ورود</button>
 
-    <p>عضو ولورا نیستید؟ <a href="./signup.html">عضویت</a></p>
+    <p class="subtitle">عضو ولورا نیستید؟ <a href="./signup.html">عضویت</a></p>
   </form>
 
 </div>
