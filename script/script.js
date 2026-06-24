@@ -244,22 +244,23 @@ function renderTours() {
     card.innerHTML= `
     <div class="tour-card-image">
         <img src="${tour.image}" alt="${tour.title}">
+    </div>
+
+    <div class="tour-card-content">
+      <h3>${tour.title}</h3>
+
+      <div class="tour-card-meta">
+        <div class="tour-card-start-date"> ${generateDate(tour.startDate)}
+        </div>
+        <span> ${tour.duration} </span>
+        <div class="tour-card-stars"> ${generateStars(tour.stars)}</div>
       </div>
 
-      <div class="tour-card-content">
-        <h3>${tour.title}</h3>
-
-        <div class="tour-card-meta">
-          <div class="tour-card-start-date"> ${generateDate(tour.startDate)}</div>
-          <span> ${tour.duration} </span>
-          <div class="tour-card-stars"> ${generateStars(tour.stars)}</div>
-        </div>
-
-        <div class="tour-card-footer">
-          <span class="tour-card-price">${tour.price}€</span>
-          <button class="card-book-btn">رزرو</button>
-        </div>
+      <div class="tour-card-footer">
+        <span class="tour-card-price">${tour.price}€</span>
+        <button class="card-book-btn">رزرو</button>
       </div>
+    </div>
     `;
 
     toursGrid.appendChild(card);
