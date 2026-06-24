@@ -43,8 +43,8 @@ def tour_search(request):
 
     
 
-def tours_api(request):
-    tours = Tour.objects.filter(is_active=True)
+def sp_tours_api(request):
+    tours = Tour.objects.filter(is_active=True, is_featured=True)
 
     data = []
 
