@@ -242,10 +242,14 @@ function generateStars(stars) {
 
   for (let i=1; i<=5; i++) {
     if (i<=stars) {
-      starsHTML += `<span class="star filled">★</span>`;
+      starsHTML += `<span class="star filled">
+      <ion-icon name="star"></ion-icon>
+      </span>`;
     }
     else {
-      starsHTML += `<span class="star empty">☆</span>`;
+      starsHTML += `<span class="star empty">
+      <ion-icon name="star-outline"></ion-icon>
+      </span>`;
     }
   }
 
@@ -274,14 +278,14 @@ function renderTours() {
         <div class="tour-card-dates">
           ${formatTourDate(tour.startDate, tour.endDate)}
         </div>
-        <div> ${tour.duration} </div>
+        <div class="tour-duration"> ${tour.duration} </div>
         
       </div>
       
       <div class="tour-card-footer">
         <div class="tour-card-star-price">
           <div class="tour-card-stars"> ${generateStars(tour.stars)}</div>
-          <div class="tour-card-price">${tour.price}€</div>
+          <div class="tour-card-price"> قیمت: ${tour.price}€</div>
         </div>
       
         <button class="card-book-btn btn">رزرو</button>
