@@ -164,7 +164,8 @@ const specialTours= [
   {
     image: "./assets/images/specialtours/international/antalya.jpg",
     title: "تور ترکیه، آنتالیا",
-    startDate: "2026-07-19",
+    startDate: "یکشنبه 28 تیر ",
+    endDate: "پنجشنبه 1 مرداد ",
     duration: "4 روز و 3 شب",
     stars: 4,
     price: "100"
@@ -172,7 +173,8 @@ const specialTours= [
   {
     image: "./assets/images/specialtours/international/bankok.jpg",
     title: "تور تایلند، بانکوک",
-    startDate: "2026-07-21",
+    startDate: "دوشنبه 29 تیر",
+    endDate: "یکشنبه 4 مرداد ",
     duration: "7 روز و 6 شب",
     stars: 4,
     price: "200"
@@ -180,7 +182,8 @@ const specialTours= [
   {
     image: "./assets/images/specialtours/international/dubai.jpg",
     title: "تور امارات، دوبی",
-    startDate: "2026-07-24",
+    startDate: "پنجشنبه 1 مرداد",
+    endDate: "چهارشنیه 7 مرداد",
     duration: "7 روز و 6 شب",
     stars: 3,
     price: "300"
@@ -188,7 +191,8 @@ const specialTours= [
   {
     image: "./assets/images/specialtours/international/istanbul.jpg",
     title: "تور ترکیه، استانبول",
-    startDate: "2026-07-25",
+    startDate: "پنجشنبه 1 مرداد",
+    endDate: "چهارشنیه 7 مرداد",
     duration: "5 روز و 4 شب",
     hotel: "هتل 6 ستاره",
     stars: 4,
@@ -197,7 +201,8 @@ const specialTours= [
   {
     image: "./assets/images/specialtours/international/paris.jpg",
     title: "تور فرانسه، پاریس",
-    startDate: "2026-07-22",
+    startDate: "پنجشنبه 1 مرداد",
+    endDate: "چهارشنیه 7 مرداد",
     duration: "9 روز و 8 شب",
     stars: 5,
     price: "500"
@@ -205,16 +210,32 @@ const specialTours= [
   {
     image: "./assets/images/specialtours/international/venice.jpg",
     title: "تور ایتالیا، ونیز",
-    startDate: "2026-07-26",
+    startDate: "پنجشنبه 1 مرداد",
+    endDate: "چهارشنیه 7 مرداد",
     duration: "7 روز و 6 شب",
     stars: 5,
     price: "600"
   },
 ];
 
-function generateDate(date) {
+// function generateDate(date) {
 
-  return moment(date).format("jYYYY/jMM/jDD");
+//   return moment(date).format("jYYYY/jMM/jDD");
+// }
+
+
+function formatTourDate(startDate, endDate) {
+  return `
+    <div class="date-item">
+      <ion-icon name="airplane-outline"></ion-icon>
+      <span>رفت: ${startDate}</span>
+    </div>
+
+    <div class="date-item">
+      <ion-icon name="return-down-back-outline"></ion-icon>
+      <span>برگشت: ${endDate}</span>
+    </div>
+  `;
 }
 function generateStars(stars) {
   let starsHTML = ``;
@@ -250,15 +271,20 @@ function renderTours() {
       <h3>${tour.title}</h3>
 
       <div class="tour-card-meta">
-        <div class="tour-card-start-date"> ${generateDate(tour.startDate)}
+        <div class="tour-card-dates">
+          ${formatTourDate(tour.startDate, tour.endDate)}
         </div>
-        <span> ${tour.duration} </span>
-        <div class="tour-card-stars"> ${generateStars(tour.stars)}</div>
+        <div> ${tour.duration} </div>
+        
       </div>
-
+      
       <div class="tour-card-footer">
-        <span class="tour-card-price">${tour.price}€</span>
-        <button class="card-book-btn">رزرو</button>
+        <div class="tour-card-star-price">
+          <div class="tour-card-stars"> ${generateStars(tour.stars)}</div>
+          <div class="tour-card-price">${tour.price}€</div>
+        </div>
+      
+        <button class="card-book-btn btn">رزرو</button>
       </div>
     </div>
     `;
