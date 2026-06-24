@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django_jalali.admin.filters import JDateFieldListFilter
-from django_jalali.admin.widgets import AdminjDateWidget  # ← تغییر کرد
+from django_jalali.admin.widgets import AdminjDateWidget 
 from django_jalali.db import models as jmodels  
 import django_jalali.admin as jadmin
-from .models import Location , Tour
+from .models import Location , Tour , TourImage
 # Register your models here.
 
 
@@ -12,14 +12,20 @@ class LocationAdmin(admin.ModelAdmin):
     list_display = ('name' , )
     search_fields = ('name' , )
 
+class TourImageInline(admin.TabularInline):
+    model = TourImage
+    extra = 3
+
 @admin.register(Tour)
 class TourAdmin(admin.ModelAdmin):
+    inlines = [TourImageInline]
     list_display = (
         'title',
         'origin',
         'destination',
         'price',
         'capacity',
+        'tour_type',
         'is_featured',
         'is_active',
     )
