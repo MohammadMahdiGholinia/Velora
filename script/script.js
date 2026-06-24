@@ -164,6 +164,7 @@ const specialTours= [
   {
     image: "./assets/images/specialtours/international/antalya.jpg",
     title: "تور ترکیه، آنتالیا",
+    startDate: "2026-07-19",
     duration: "4 روز و 3 شب",
     stars: 4,
     price: "100"
@@ -171,6 +172,7 @@ const specialTours= [
   {
     image: "./assets/images/specialtours/international/bankok.jpg",
     title: "تور تایلند، بانکوک",
+    startDate: "2026-07-21",
     duration: "7 روز و 6 شب",
     stars: 4,
     price: "200"
@@ -178,6 +180,7 @@ const specialTours= [
   {
     image: "./assets/images/specialtours/international/dubai.jpg",
     title: "تور امارات، دوبی",
+    startDate: "2026-07-24",
     duration: "7 روز و 6 شب",
     stars: 3,
     price: "300"
@@ -185,6 +188,7 @@ const specialTours= [
   {
     image: "./assets/images/specialtours/international/istanbul.jpg",
     title: "تور ترکیه، استانبول",
+    startDate: "2026-07-25",
     duration: "5 روز و 4 شب",
     hotel: "هتل 6 ستاره",
     stars: 4,
@@ -193,6 +197,7 @@ const specialTours= [
   {
     image: "./assets/images/specialtours/international/paris.jpg",
     title: "تور فرانسه، پاریس",
+    startDate: "2026-07-22",
     duration: "9 روز و 8 شب",
     stars: 5,
     price: "500"
@@ -200,13 +205,17 @@ const specialTours= [
   {
     image: "./assets/images/specialtours/international/venice.jpg",
     title: "تور ایتالیا، ونیز",
+    startDate: "2026-07-26",
     duration: "7 روز و 6 شب",
     stars: 5,
     price: "600"
   },
 ];
 
+function generateDate(date) {
 
+  return moment(date).format("jYYYY/jMM/jDD");
+}
 function generateStars(stars) {
   let starsHTML = ``;
 
@@ -241,6 +250,7 @@ function renderTours() {
         <h3>${tour.title}</h3>
 
         <div class="tour-card-meta">
+          <div class="tour-card-start-date"> ${generateDate(tour.startDate)}</div>
           <span> ${tour.duration} </span>
           <div class="tour-card-stars"> ${generateStars(tour.stars)}</div>
         </div>
