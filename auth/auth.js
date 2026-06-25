@@ -1,16 +1,20 @@
-const loginForm = document.getElementById("login-form");
-const submitButton= document.querySelector(".submit");
-const phoneError = document.getElementById("phone-error");
-const passwordError = document.getElementById("password-error");
+// Login
 
-loginForm.addEventListener("submit", async (event)=> {
+const loginForm = document.getElementById("login-form");
+
+if (loginForm) {
+  const loginSubmitButton= loginForm.querySelector(".submit");
+  const phoneError = document.getElementById("lpgin-phone-error");
+  const passwordError = document.getElementById("login-password-error");
+
+  loginForm.addEventListener("submit", async (event)=> {
   event.preventDefault();
 
   phoneError.innerText="";
   passwordError.innerText="";
 
-  submitButton.disabled = true;
-  submitButton.innerText="در حال ورود"
+  loginSubmitButton.disabled = true;
+  loginSubmitButton.innerText="در حال ورود"
 
  
   const formData= new FormData(event.target);
@@ -21,7 +25,6 @@ loginForm.addEventListener("submit", async (event)=> {
   }
 
   let error=false;
-  
 
   if (data.phone.length!==11) {
     phoneError.innerText="شماره تلفن اشتباه است.";
@@ -34,109 +37,75 @@ loginForm.addEventListener("submit", async (event)=> {
   }
 
   if (error) {
+    submitButton.disabled = false;
+    submitButton.innerText = "ورود";
     return;
   }
 
-  try {
-    const response =await fetch("http://localhost:3000/login", {
-      method: "POST",
-      headers:{
-      "Content-Type":"application/json" },
-      body: JSON.stringify(data)
-      });
-
-    const result= await response.json(); 
-    if (response.ok) {
-      alert("ورود موفق 🎉");
-      console.log("TOKEN:", result.token);
-    } else {
-      alert(result.message || "خطا در ورود");
-    }
-  }
-
-    catch (error) {
-      console.log(error);
-      alert("مشکل در اتصال به سرور");
-  }
-
-  submitButton.disabled = false;
-  submitButton.innerText = "ورود";
-
-
-
-
+  loginForm.submit();
 
 });
+
+
+
+}
+
+
+
+
+// Sign Up
 
 
 const signupForm = document.getElementById("signup-form");
-const telError= document.getElementById("tel-error");
-const passwordError= document.getElementById("password-error");
-const submitButton = document.querySelector(".submit");
 
-signupForm.addEventListener("submit", async(event) => {
-event.preventDefault();
-telError.innerText="";
-passwordError.innerText="";
+if (signupForm) {
 
-submitButton.disabled=true;
-submitButton.innerText="در حال ثبت نام";
+  const phoneError= document.getElementById("signup-phone-error");
+  const passwordError= document.getElementById("signup-password-error");
+  const signupSubmitButton = signupForm.querySelector(".submit");
 
-const formData= new FormData(event.target);
-const data= {
-  firstname: formData.get("firstname"),
-  lastname: formData.get("lastname"),
-  phone: formData.get("phone"),
-  password: formData.get("password")
-};
+  signupForm.addEventListener("submit", async(event) => {
+    event.preventDefault();
+    phoneError.innerText="";
+    passwordError.innerText="";
 
-let error=false;
+    signupSubmitButton.disabled=true;
+    signupSubmitButton.innerText="در حال ثبت نام";
 
-if (data.phone.length !== 11) {
-  telError.innerText = "شماره تلفن نامعتبر است.";
-  error = true;
-}
+    const formData= new FormData(event.target);
+    const data= {
+      firstname: formData.get("firstname"),
+      lastname: formData.get("lastname"),
+      phone: formData.get("phone"),
+      password: formData.get("password")
+    };
 
-if (data.password.length < 8) {
-  passwordError.innerText = "رمز عبور باید حداقل 8 کاراکتر باشد";
-  error = true;
-}
+    let error=false;
 
-if (error) {
-  submitButton.disabled=false;
-  submitButton.innerText= "ثبت نام ";
-  return;
-}
+    if (data.phone.length !== 11) {
+      phoneError.innerText = "شماره تلفن نامعتبر است.";
+      error = true;
+    }
 
-try {
-  const response = await fetch("http://localhost:3000/signup", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  });
+    if (data.password.length < 8) {
+      passwordError.innerText = "رمز عبور باید حداقل 8 کاراکتر باشد";
+      error = true;
+    }
 
-  const result = await response.json();
+    if (error) {
+      signupSubmitButton.disabled=false;
+      signupSubmitButton.innerText= "ثبت نام ";
+      return;
+    }
 
-  if (response.ok) {
-    alert("ثبت نام موفق");
-
-  } else {
-    alert(result.message || "خطا در ثبت نام");
+    
+    signupForm.submit();
+    });
+    
   }
 
-}
-catch (error) {
-  console.log(error);
-  alert("مشکل در اتصال به سرور");
-}
-
-submitButton.disabled = false;
-submitButton.innerText = "ثبت نام";
 
 
-});
 
 
 
