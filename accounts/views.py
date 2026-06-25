@@ -8,9 +8,6 @@ from .models import Profile
 
 
 def signup_view(request):
-    print("METHOD:", request.method)
-    print("POST DATA:", request.POST)
-
     if request.method == 'POST':
         form = SignupForm(request.POST)
 
