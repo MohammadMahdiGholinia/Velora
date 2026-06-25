@@ -56,7 +56,7 @@ input::placeholder {
   font-weight: var(--fw-bold);
   margin-bottom: 20px;
   text-align: center;
-  color: var(----text-gunmetal);
+  color: var(--text-gunmetal);
 }
 
 .auth-form input {

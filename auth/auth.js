@@ -4,7 +4,7 @@ const loginForm = document.getElementById("login-form");
 
 if (loginForm) {
   const loginSubmitButton= loginForm.querySelector(".submit");
-  const phoneError = document.getElementById("lpgin-phone-error");
+  const phoneError = document.getElementById("login-phone-error");
   const passwordError = document.getElementById("login-password-error");
 
   loginForm.addEventListener("submit", async (event)=> {
@@ -37,12 +37,44 @@ if (loginForm) {
   }
 
   if (error) {
-    submitButton.disabled = false;
-    submitButton.innerText = "ورود";
+    loginSubmitButton.disabled = false;
+    loginSubmitButton.innerText = "ورود";
     return;
   }
 
-  loginForm.submit();
+  // try {
+  //   const response = await fetch("http://localhost:3000/login", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(data)
+  //   });
+
+  //   const result = await response.json();
+
+  //   if (response.ok) {
+  //     alert("ورود موفق");
+  //     console.log("TOKEN:", result.token);
+
+  
+  //     localStorage.setItem("token", result.token);
+
+  //     window.location.href = "./index.html";
+  //   } else {
+  //     alert("خطا در ورود");
+  //   }
+
+  // } catch (err) {
+  //   console.log(err);
+  //   alert("مشکل در اتصال به سرور");
+  // }
+
+  // loginSubmitButton.disabled = false;
+  // loginSubmitButton.innerText = "ورود";
+
+
+  
 
 });
 
@@ -98,8 +130,37 @@ if (signupForm) {
       return;
     }
 
+// try {
+//   const response = await fetch("http://localhost:3000/signup", {
+//     method: "POST",
+//     headers: {
+//     "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify(data)
+//   });
+
+//   const result = await response.json();
+
+//   if (response.ok) {
+//     alert("ثبت نام موفق");
+
+//   window.location.href = "./login.html";
+//   }
+//    else {
+//   alert("خطا در ثبت نام");
+
+//   }
+
+// } catch (err) {
+//   console.log(err);
+//   alert("مشکل در اتصال به سرور");
+// } 
+
+// signupSubmitButton.disabled = false;
+// signupSubmitButton.innerText = "ثبت نام";
+
     
-    signupForm.submit();
+    
     });
     
   }
