@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="{% static 'css/reset-variables.css' %}">
+  <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
+
+<div class="auth-container">
+
+  <form id="signup-form" class="auth-form" method="POST">
+    {% csrf_token %}
+
+    <h2>عضویت</h2>
+
+    <input type="text" name="first_name" placeholder="نام" required>
+    <input type="text" name="last_name" placeholder="نام خانوادگی" required>
+    <input type="tel" name="phone" placeholder="شماره تلفن" required>
+    <div class="error" id="signup-phone-error"></div>
+    <input type="password" name="password" placeholder="رمز عبور" required>
+    <div class="error" id="signup-password-error"></div>
+
+    <button class="submit" type="submit">ثبت نام</button>
+
+    <p class="subtitle"> قبلا عضو شده اید؟ <a href="#">ورود</a></p>
+  </form>
+
+</div>
+{% if form.errors %}
+    <div style="color:red">{{ form.errors }}</div>
+{% endif %}
+
+<script src="{% static 'js/auth.js' %}"></script>
+</body>
+</html>

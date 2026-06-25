@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django_jalali',
     'tours',
+    'accounts',
 ]
 
 MIDDLEWARE = [
