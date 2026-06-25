@@ -162,60 +162,60 @@ document.addEventListener("click", (e) => {
 
 const specialTours= [
   {
-    image: "./assets/images/specialtours/international/antalya.jpg",
-    title: "تور ترکیه، آنتالیا",
-    startDate: "یکشنبه 28 تیر ",
-    endDate: "پنجشنبه 1 مرداد ",
-    duration: "4 روز و 3 شب",
-    stars: 4,
-    price: "100"
+    cover: "./assets/images/specialtours/international/paris.jpg",
+    badge: "ویژه",
+    country: "تور فرانسه",
+    city: "پاریس",
+    startDate: "2025-07-22",
+    duration: "9",
+    price: "65300000"
   },
   {
-    image: "./assets/images/specialtours/international/bankok.jpg",
-    title: "تور تایلند، بانکوک",
-    startDate: "دوشنبه 29 تیر",
-    endDate: "یکشنبه 4 مرداد ",
-    duration: "7 روز و 6 شب",
-    stars: 4,
-    price: "200"
-  },
+  cover: "./assets/images/specialtours/international/bankok.jpg",
+  badge: "ویژه",
+  country: "تور تایلند",
+  city: "بانکوک",
+  startDate: "2025-07-22",
+  duration: "9",
+  nightDuration: "8",
+  price: "76200000"
+},
   {
-    image: "./assets/images/specialtours/international/dubai.jpg",
-    title: "تور امارات، دوبی",
-    startDate: "پنجشنبه 1 مرداد",
-    endDate: "چهارشنیه 7 مرداد",
-    duration: "7 روز و 6 شب",
-    stars: 3,
-    price: "300"
-  },
+  cover: "./assets/images/specialtours/international/dubai.jpg",
+  badge: "ویژه",
+  country: "تور امارات",
+  city: "دوبی",
+  startDate: "2025-07-22",
+  duration: "9",
+  price: "58200000"
+},
   {
-    image: "./assets/images/specialtours/international/istanbul.jpg",
-    title: "تور ترکیه، استانبول",
-    startDate: "پنجشنبه 1 مرداد",
-    endDate: "چهارشنیه 7 مرداد",
-    duration: "5 روز و 4 شب",
-    hotel: "هتل 6 ستاره",
-    stars: 4,
-    price: "400"
-  },
+  cover: "./assets/images/specialtours/international/istanbul.jpg",
+  badge: "ویژه",
+  country: "تور ترکیه",
+  city: "استانبول",
+  startDate: "2025-07-22",
+  duration: "9",
+  price: "56700000"
+},
   {
-    image: "./assets/images/specialtours/international/paris.jpg",
-    title: "تور فرانسه، پاریس",
-    startDate: "پنجشنبه 1 مرداد",
-    endDate: "چهارشنیه 7 مرداد",
-    duration: "9 روز و 8 شب",
-    stars: 5,
-    price: "500"
-  },
+  cover: "./assets/images/specialtours/international/venice.jpg",
+  badge: "ویژه",
+  country: "تور ایتالیا",
+  city: "ونیز",
+  startDate: "2025-07-22",
+  duration: "9",
+  price: "62150000"
+},
   {
-    image: "./assets/images/specialtours/international/venice.jpg",
-    title: "تور ایتالیا، ونیز",
-    startDate: "پنجشنبه 1 مرداد",
-    endDate: "چهارشنیه 7 مرداد",
-    duration: "7 روز و 6 شب",
-    stars: 5,
-    price: "600"
-  },
+  cover: "./assets/images/specialtours/international/antalya.jpg",
+  badge: "ویژه",
+  country: "تور ترکیه",
+  city: "آنتالیا",
+  startDate: "2025-07-22",
+  duration: "9",
+  price: "45900000"
+}
 ];
 
 // function generateDate(date) {
@@ -224,37 +224,47 @@ const specialTours= [
 // }
 
 
-function formatTourDate(startDate, endDate) {
-  return `
-    <div class="date-item">
-      <ion-icon name="airplane-outline"></ion-icon>
-      <span>رفت: ${startDate}</span>
-    </div>
+function dateGenerator(startDate) {
+  const date = new Date(startDate);
 
-    <div class="date-item">
-      <ion-icon name="return-down-back-outline"></ion-icon>
-      <span>برگشت: ${endDate}</span>
-    </div>
-  `;
+  const options = {
+    day: "numeric",
+    month: "long"
+  };
+
+  return date.toLocaleDateString('fa-IR', options);
+
 }
-function generateStars(stars) {
-  let starsHTML = ``;
 
-  for (let i=1; i<=5; i++) {
-    if (i<=stars) {
-      starsHTML += `<span class="star filled">
-      <ion-icon name="star"></ion-icon>
-      </span>`;
-    }
-    else {
-      starsHTML += `<span class="star empty">
-      <ion-icon name="star-outline"></ion-icon>
-      </span>`;
-    }
-  }
+function titleGenerator(country, city) {
 
-  return starsHTML;
+  return `${country}، ${city}`
+
 }
+
+function durationGenerator(duration) {
+  const night = Number(duration) - 1;
+  return `${duration} روز و  ${night} شب`
+
+}
+// function generateStars(stars) {
+//   let starsHTML = ``;
+
+//   for (let i=1; i<=5; i++) {
+//     if (i<=stars) {
+//       starsHTML += `<span class="star filled">
+//       <ion-icon name="star"></ion-icon>
+//       </span>`;
+//     }
+//     else {
+//       starsHTML += `<span class="star empty">
+//       <ion-icon name="star-outline"></ion-icon>
+//       </span>`;
+//     }
+//   }
+
+//   return starsHTML;
+// }
 
 const toursGrid = document.querySelector(".tours-grid");
 
@@ -267,30 +277,34 @@ function renderTours() {
     card.classList.add("tour-card");
 
     card.innerHTML= `
-    <div class="tour-card-image">
-        <img src="${tour.image}" alt="${tour.title}">
+    <a href="#"> 
+        <div class="tour-card-image">
+        <img src="${tour.cover}" alt="${tour.country}">
+        <span class="tour-card-badge"> ${tour.badge}</span>
     </div>
 
     <div class="tour-card-content">
-      <h3>${tour.title}</h3>
+      <div class="tour-card-header">
+      <h3 class="tour-card-header-title">${titleGenerator(tour.country, tour.city)}</h3>
+      <div class="tour-card-header-start">
+      ${dateGenerator(tour.startDate)}
+      </div>
+      
+    </div>
 
       <div class="tour-card-meta">
-        <div class="tour-card-dates">
-          ${formatTourDate(tour.startDate, tour.endDate)}
-        </div>
-        <div class="tour-duration"> ${tour.duration} </div>
-        
+        <div class="tour-duration"> ${durationGenerator(tour.duration)} </div>
       </div>
       
-      <div class="tour-card-footer">
-        <div class="tour-card-star-price">
-          <div class="tour-card-stars"> ${generateStars(tour.stars)}</div>
-          <div class="tour-card-price"> قیمت: ${tour.price}€</div>
-        </div>
-      
-        <button class="card-book-btn btn">رزرو</button>
+  
+      <div class="tour-card-price"> 
+        <span>${new Intl.NumberFormat('fa-IR').format(tour.price)}</span> تومان
       </div>
+    
+      <div class="tour-card-attention"><ion-icon name="alert-circle-outline"></ion-icon> شامل حمل و نقل، اقامت و خدمات تور</div>
     </div>
+    </a>
+
     `;
 
     toursGrid.appendChild(card);
@@ -302,3 +316,6 @@ function renderTours() {
 }
 
 renderTours();
+
+
+

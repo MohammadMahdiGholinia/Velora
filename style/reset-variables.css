@@ -23,11 +23,12 @@
 
   /* text color */
   --text-white: hsl(0, 0%, 100%);
-  --text-gunmetal: hsl(209, 40%, 14%);
-  --text-light-coral: #0ea5e9;
+  --text-gunmetal: hsla(209, 41%, 14%, 0.751);
+  /* --text-gunmetal: hsl(209, 40%, 14%); */
+  --text-price: #e21388;
   --text-granite-gray: hsl(210, 4%, 38%);
-  --text-majorelle-blue: hsl(249, 95%, 63%);
-  --text-sunglow: hsl(48, 100%, 50%);
+  --text-majorelle-blue: hsl(213, 66%, 36%);
+  --text-sunglow: hsl(0, 63%, 59%);
 
   /* border color */
   --border-gainsboro: hsl(0, 1%, 85%);
@@ -47,6 +48,7 @@
   --fs-5: 2rem;
   --fs-6: 1.6rem;
   --fs-7: 1.5rem;
+
 
   /* font weight */
   --fw-bold: 700;
@@ -104,6 +106,7 @@ img,
 input,
 button {
   text-decoration: none;
+  color: inherit;
   display: block;
 }
 
@@ -140,6 +143,8 @@ body {
 body.nav-active {
   overflow: hidden;
 }
+
+
 
 
 
