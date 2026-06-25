@@ -243,8 +243,11 @@ function titleGenerator(country, city) {
 }
 
 function durationGenerator(duration) {
-  const night = Number(duration) - 1;
-  return `${duration} روز و  ${night} شب`
+  const day=Number(duration)
+  const newDay = new Intl.NumberFormat('fa-IR').format(day);
+  const night = day- 1;
+  const newNight = new Intl.NumberFormat('fa-IR').format(night);
+  return `${newDay} روز و  ${newNight} شب`;
 
 }
 // function generateStars(stars) {
