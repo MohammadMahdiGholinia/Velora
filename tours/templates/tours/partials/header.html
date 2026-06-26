@@ -31,9 +31,31 @@
         <li class="navbar-item"> <a href="#" class="navbar-link">تور ناشناس</a></li>
       </ul>
       
-      <div class="header-action">
+      {% comment %} <div class="header-action">
         <a href="{% url "login" %}" class="login-btn"> ورود</a>
         <a href="{% url "signup" %}" class="btn btn-primary">عضویت</a>
+      </div> {% endcomment %}
+
+      <div class="header-action">
+
+        {% if user.is_authenticated %}
+
+        <div class="loggedin">
+          <a href="#" class="login-btn"> پنل</a>
+          <a href="{% url "logout" %}" class="btn btn-primary">خروج</a>
+
+        </div>
+
+        {% else %}
+
+        <div class="loggedout">
+          <a href="{% url "login" %}" class="login-btn"> ورود</a>
+          <a href="{% url "signup" %}" class="btn btn-primary">عضویت</a>
+        </div>
+
+        {% endif %}
+
+
       </div>
       
 
