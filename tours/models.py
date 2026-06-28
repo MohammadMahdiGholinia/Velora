@@ -1,7 +1,6 @@
 from django.db import models
 from django_jalali.db import models as jmodels
 from django.core.validators import MinValueValidator, MaxValueValidator
-from cloudinary.models import CloudinaryField
 
 
 
@@ -27,7 +26,7 @@ class Tour(models.Model):
     origin = models.ForeignKey(Location, on_delete=models.CASCADE , related_name='origin')
     destination = models.ForeignKey(Location, on_delete=models.CASCADE , related_name='destination')
     # cover = models.ImageField(upload_to = 'tours/cover')
-    cover = CloudinaryField('cover')
+    cover = models.URLField(max_length=500)
     start_date = jmodels.jDateField()
     end_date = jmodels.jDateField()
     duration = models.PositiveIntegerField()
@@ -46,7 +45,7 @@ class Tour(models.Model):
 class TourImage (models.Model):
     tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='images')
     # images = models.ImageField(upload_to='tours/gallery')
-    images = CloudinaryField('images')
+    images = models.URLField(max_length=500)
 
     def __str__(self):
         return f'گالری {self.tour.title}'
