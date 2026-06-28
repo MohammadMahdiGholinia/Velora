@@ -50,7 +50,7 @@ def sp_tours_api(request):
 
     for tour in tours :
         data.append({
-            'cover':tour.cover.url,
+            'cover':tour.cover,
             'title':tour.title,
             'startDate': tour.start_date.strftime("%Y-%m-%d") if tour.start_date else None,
             'endDate': tour.end_date.strftime("%Y-%m-%d") if tour.end_date else None,
