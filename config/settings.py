@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django_jalali',
     'cloudinary',
+    'rest_framework',
     'cloudinary_storage',
     "corsheaders",
     'tours',

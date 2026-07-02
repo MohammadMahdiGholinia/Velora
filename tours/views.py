@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse , JsonResponse
 from django.db.models import Q
 from .models import Tour
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .serializers import SpecialTourSerializer
 
 # Create your views here.
 
@@ -43,22 +46,10 @@ def tour_search(request):
 
     
 
-def sp_tours_api(request):
-    tours = Tour.objects.filter(is_active=True, is_featured=True)
+class SpecialTourListAPI(APIView):
+    def get(self, request):
+        tours = Tour.objects.filter(is_active=True , is_featured=True)
+        serializer = SpecialTourSerializer(tours ,many=True)
 
-    data = []
-
-    for tour in tours :
-        data.append({
-            'cover':tour.cover,
-            'title':tour.title,
-            'startDate': tour.start_date.strftime("%Y-%m-%d") if tour.start_date else None,
-            'endDate': tour.end_date.strftime("%Y-%m-%d") if tour.end_date else None,
-            'duration':tour.duration,
-            'price':tour.price,
-
-        })
-
-    return JsonResponse(data , safe=False)
-
+        return Response(serializer.data)
 
