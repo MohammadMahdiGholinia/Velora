@@ -19,14 +19,14 @@
 <header class="header" data-header>
   <div class="container">
 
-    <a href="#">
-      <img src="./assets/images/temp-logo.svg" width="187" height="38" alt="logo">
+    <a href="#" class="logo">
+      <img src="./assets/images/temp-logo.svg" height="38" alt="logo">
     </a>
 
     <nav class="navbar" data-nav>
       <div class="navbar-top">
-        <a href="#">
-          <img src="./assets/images/temp-logo.svg" width="187" height="38" alt="logo">
+        <a href="#" class="logo">
+          <img src="./assets/images/temp-logo.svg" height="38" alt="logo">
         </a>
 
         <button class="nav-toggle-btn" aria-label="close menu" data-nav-toggler>
@@ -43,8 +43,16 @@
       </ul>
       
       <div class="header-action">
-        <a href="./auth/login.html" class="login-btn"> ورود</a>
-        <a href="./auth/signup.html" class="btn btn-primary">عضویت</a>
+        <div class="loggedout">
+          <a href="./auth/login.html" class="btn login-btn"> ورود</a>
+          <a href="./auth/signup.html" class="btn btn-primary">عضویت</a>
+        </div>
+        <div class="loggedin">
+          <a href="#" class="login-btn"> پنل کاربری</a>
+          <a href="#" class="btn btn-primary">خروج </a>
+
+        </div>
+
       </div>
       
 
@@ -87,7 +95,7 @@
               
               <div class="hero-field">
                 <label for="month-input"> تاریخ</label>
-                <input id="month-input" name="month" type="text">
+                <input id="month-input" name="month" readonly>
 
                 
               </div>
@@ -95,18 +103,18 @@
               <button type="submit" class="search-btn btn"> جستجو</button>
 
               <div id="month-modal" class="month-modal">
-                <button class="month-button" data-month="01"> فروردین</button>
-                <button class="month-button" data-month="02"> اردیبهشت</button>
-                <button class="month-button" data-month="03"> خرداد</button>
-                <button class="month-button" data-month="04"> تیر</button>
-                <button class="month-button" data-month="05"> مرداد</button>
-                <button class="month-button" data-month="06"> شهریور</button>
-                <button class="month-button" data-month="07"> مهر</button>
-                <button class="month-button" data-month="08"> آبان</button>
-                <button class="month-button" data-month="09"> آذر</button>
-                <button class="month-button" data-month="10"> دی</button>
-                <button class="month-button" data-month="11"> بهمن</button>
-                <button class="month-button" data-month="12"> اسفند</button>
+                <button type="button" class="month-button" data-month="01"> فروردین</button>
+                <button type="button" class="month-button" data-month="02"> اردیبهشت</button>
+                <button type="button" class="month-button" data-month="03"> خرداد</button>
+                <button type="button" class="month-button" data-month="04"> تیر</button>
+                <button type="button" class="month-button" data-month="05"> مرداد</button>
+                <button type="button" class="month-button" data-month="06"> شهریور</button>
+                <button type="button" class="month-button" data-month="07"> مهر</button>
+                <button type="button" class="month-button" data-month="08"> آبان</button>
+                <button type="button" class="month-button" data-month="09"> آذر</button>
+                <button type="button" class="month-button" data-month="10"> دی</button>
+                <button type="button" class="month-button" data-month="11"> بهمن</button>
+                <button type="button" class="month-button" data-month="12"> اسفند</button>
               </div>
 
           
@@ -128,8 +136,7 @@
 </main>
 
 
-<script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/min/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment-jalaali@0.9.2/build/moment-jalaali.js"></script>
+
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
