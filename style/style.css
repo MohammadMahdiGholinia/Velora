@@ -26,7 +26,6 @@
 
 .login-btn {
   background-color: #b4b4b4;
-
   color: var(--text-white);
 
   /* padding-inline: 30px;
@@ -67,7 +66,8 @@
   justify-content: center;
   align-items: center;
   padding: 10px 18px;
-
+  width: 100px;
+  height: 50px;
   border-radius:var(--radius-pill);
   transition: var(--transition-1);
 }
@@ -80,17 +80,6 @@
   box-shadow: var(--shadow-2);
 
 }
-
-
- /* .btn-secondary {
-  background-color: var(--bg-red-salsa) ;
-
- }
-
- .btn-secodary:is(:hover, :focus-visible) {
-  background-color: var(--bg-endlish-vermillion);
-  box-shadow: var(--shadow-3);
- } */
 
 
 
@@ -232,16 +221,15 @@
 
 
  .header-action{  
-  display: flex;
   margin-block-start:auto;
   padding-block-start: 20px;
   border-block-start: 1px solid var(--border-gainsboro);
-
  }
  .header-action .loggedout, .header-action .loggedin {
     display: flex;
     gap: 12px;
     align-items: center ;
+    justify-content: space-around;
  }
 
 
@@ -521,6 +509,7 @@
 /* Tour card image */
 .tour-card-image {
   overflow: hidden;
+  position: relative;
   
 }
 
@@ -531,7 +520,8 @@
   overflow: hidden;
   transition: transform 0.5s ease;
   /* border-top-left-radius: 20px;
-  border-top-right-radius: 20px; */
+  border-top-right-radius: 20px; */  
+  
 } 
 
 .tour-card-image img::after {
@@ -609,7 +599,7 @@
   justify-content: start;
   gap: 5px;
   align-items: baseline;
-  margin-bottom: 10px;
+
 }
 
 .tour-card-price span {
