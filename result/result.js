@@ -143,35 +143,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// month modal
-const monthInput = document.getElementById("month-input");
-const monthModal = document.getElementById("month-modal");
-const monthButtons = document.querySelectorAll(".month-button");
-
-monthInput.addEventListener("click", () => {
-  monthModal.classList.add("active");
-});
-
-monthButtons.forEach( (button) => {
-  button.addEventListener("click", () => {
-    monthInput.value = button.textContent;
-    monthModal.classList.remove("active");
-  });
-  
-  
-});
-
-document.addEventListener("click", (e) => {
-  if (!e.target.closest(".hero-field")) {
-    monthModal.classList.remove("active");
-  }
-});
 
 // Special tours
 
 const specialTours= [
   {
-    cover: "./assets/images/specialtours/international/paris.jpg",
+    cover: "../assets/images/specialtours/international/paris.jpg",
     badge: "ویژه",
     country: "تور فرانسه",
     city: "پاریس",
@@ -180,7 +157,7 @@ const specialTours= [
     price: "65300000"
   },
   {
-  cover: "./assets/images/specialtours/international/bankok.jpg",
+  cover: "../assets/images/specialtours/international/bankok.jpg",
   badge: "ویژه",
   country: "تور تایلند",
   city: "بانکوک",
@@ -190,7 +167,7 @@ const specialTours= [
   price: "76200000"
 },
   {
-  cover: "./assets/images/specialtours/international/dubai.jpg",
+  cover: "../assets/images/specialtours/international/dubai.jpg",
   badge: "ویژه",
   country: "تور امارات",
   city: "دوبی",
@@ -199,7 +176,7 @@ const specialTours= [
   price: "58200000"
 },
   {
-  cover: "./assets/images/specialtours/international/istanbul.jpg",
+  cover: "../assets/images/specialtours/international/istanbul.jpg",
   badge: "ویژه",
   country: "تور ترکیه",
   city: "استانبول",
@@ -208,7 +185,7 @@ const specialTours= [
   price: "56700000"
 },
   {
-  cover: "./assets/images/specialtours/international/venice.jpg",
+  cover: "../assets/images/specialtours/international/venice.jpg",
   badge: "ویژه",
   country: "تور ایتالیا",
   city: "ونیز",
@@ -217,7 +194,7 @@ const specialTours= [
   price: "62150000"
 },
   {
-  cover: "./assets/images/specialtours/international/antalya.jpg",
+  cover: "../assets/images/specialtours/international/antalya.jpg",
   badge: "ویژه",
   country: "تور ترکیه",
   city: "آنتالیا",

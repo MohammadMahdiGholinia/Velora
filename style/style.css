@@ -553,6 +553,7 @@
   height: 200px;
   object-fit: cover;
   overflow: hidden;
+  opacity: 0.97;
   transition: transform 0.5s ease;
   /* border-top-left-radius: 20px;
   border-top-right-radius: 20px; */  
@@ -565,7 +566,7 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0,0,0,0.5),
+    rgba(0, 0, 0, 0.716),
     transparent 60%
   );
 }
