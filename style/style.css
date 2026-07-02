@@ -439,7 +439,7 @@
 }
 
 
-.special-tours-title {
+/* .special-tours-title {
   background: linear-gradient(90deg, var(--bg-majorelle-blue), #184eab);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -471,6 +471,41 @@
   );
 
   border-radius: 10px;
+} */
+
+.special-tours-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.special-tours-title h2 {
+  font-size: var(--fs-5);
+  font-weight: var(--fw-bold);
+  color:var(--text-majorelle-blue);
+}
+
+.special-tours-title span {
+  height: 2px;
+  flex: 1;
+  border-radius: 999px;
+}
+
+.special-tours-title span.right {
+  background: linear-gradient(
+    to left,
+    rgba(26, 83, 189, 0.5),
+    transparent
+  );
+}
+.special-tours-title span.left {
+  background: linear-gradient(
+    to right,
+    rgba(26, 83, 189, 0.5),
+    transparent
+  );
 }
 
 
