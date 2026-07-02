@@ -3,18 +3,26 @@ from django_jalali.admin.filters import JDateFieldListFilter
 from django_jalali.admin.widgets import AdminjDateWidget 
 from django_jalali.db import models as jmodels  
 import django_jalali.admin as jadmin
-from .models import Location , Tour , TourImage
+from .models import  Tour , TourImage , City , Country
 # Register your models here.
 
 
-@admin.register(Location)
-class LocationAdmin(admin.ModelAdmin):
+@admin.register(Country)
+class CountryAdmin(admin.ModelAdmin):
     list_display = ('name' , )
     search_fields = ('name' , )
+
+
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    list_display = ('name' , )
+    search_fields = ('name' , )
+
 
 class TourImageInline(admin.TabularInline):
     model = TourImage
     extra = 3
+
 
 @admin.register(Tour)
 class TourAdmin(admin.ModelAdmin):

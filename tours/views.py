@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse , JsonResponse
 from django.db.models import Q
-from .models import Tour, Location
+from .models import Tour
 
 # Create your views here.
 
@@ -55,7 +55,6 @@ def sp_tours_api(request):
             'startDate': tour.start_date.strftime("%Y-%m-%d") if tour.start_date else None,
             'endDate': tour.end_date.strftime("%Y-%m-%d") if tour.end_date else None,
             'duration':tour.duration,
-            'stars':tour.hotel_stars,
             'price':tour.price,
 
         })
