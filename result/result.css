@@ -28,7 +28,7 @@
   padding-inline: 16px;
 }
 section {
-  padding-block: 50px;
+  padding-block: 30px;
 }
 
 
@@ -127,7 +127,7 @@ section {
 }
 
 .header {
-  padding-block : 30px;
+  padding-block : 20px;
   /* position: absolute;
   top: 0;
   left: 0; */
@@ -167,7 +167,7 @@ section {
   background-color: var(--bg-white);
   display: flex;
   flex-direction: column;
-  z-index: 1;
+  z-index: 4;
   transition: 400ms var(--cubic-out);
   visibility: hidden;
 
@@ -270,13 +270,17 @@ section {
 
  .hero {
   position: relative;
-  min-height: 60vh;
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 
   } 
 
-  .hero .container {
+ section.hero.container {
     position: relative;
-    min-height: 60vh;
+    min-height: 70vh;
   }
      
 .hero-bg {
@@ -308,47 +312,68 @@ section {
   background: rgba(0,0,0,0.45);
   border-radius: 10px;
   } 
+  .hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  }
+
   
 
 
-/* Special Tours */
+/* result Tours */
+.result-tours-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
 
-
-
-
-.special-tours-title {
-  background: linear-gradient(90deg, var(--bg-majorelle-blue), #184eab);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  position: relative;
-
+.result-tours-title h2 {
   font-size: var(--fs-5);
   font-weight: var(--fw-bold);
+  color:var(--text-majorelle-blue);
 }
 
-.special-tours-title::before {
-  content: "";
-  position: absolute;
-  bottom: -6px;
-  right: 0;
-  width: 40%;
-  height: 4px;
-  background: linear-gradient(90deg, var(--bg-majorelle-blue), transparent);
-  filter: blur(1px);
+
+
+
+/* .result-tours-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
 }
-.special-tours-title::after {
-  content: "";
-  flex: 1;
+
+.result-tours-title h2 {
+  font-size: var(--fs-5);
+  font-weight: var(--fw-bold);
+  color:var(--text-majorelle-blue);
+}
+
+.result-tours-title span {
   height: 2px;
+  flex: 1;
+  border-radius: 999px;
+}
 
+.result-tours-title span.right {
   background: linear-gradient(
-    90deg,
-    rgba(0,0,0,0.05),
+    to left,
+    rgba(26, 83, 189, 0.5),
     transparent
   );
-
-  border-radius: 10px;
 }
+.result-tours-title span.left {
+  background: linear-gradient(
+    to right,
+    rgba(26, 83, 189, 0.5),
+    transparent
+  );
+}
+ */
 
 
 .tours-grid {

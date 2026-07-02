@@ -69,28 +69,43 @@
 
 <main>
    <!-- Hero Section-->
-    <div class="hero" data-hero>
-        <section class="container" >
+    <section class="hero container" data-hero>
+        
 
         <div class="hero-bg hero-bg-1"></div>
         <div class="hero-bg hero-bg-2"></div>
 
         <div class="hero-overlay"></div>
-    </div>
+
+      <div class="hero-content container">
+        <h1 class="hero-title" id="hero-title"></h1>
+      </div>
+
+    </section>
 
 
            
     
            
 
-      </section>
-            <section class="special-tours">
-        
+  
+      <section class="result-tours">
+
         <div class="container">
-          <h2 class="special-tours-title" >پیشنهادات ویژه ولورا</h2>
+
+          <div class="result-tours-title">
+
+            <span class="right"></span>
+            <h2 id="result-tours-title-h2"></h2>
+            <span class="left"></span>
+
+          </div>
 
           <div class="tours-grid">
+
           </div>
+
+
         </div>
       </section>
 
@@ -107,6 +122,6 @@
 
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script src="./result.js"></script>
+  <script src="./result.js" defer></script>
 </body>
 </html>

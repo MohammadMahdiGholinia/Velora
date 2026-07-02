@@ -82,8 +82,8 @@ const heroBgs = [
 
 const bg1 = document.querySelector(".hero-bg-1");
 const bg2 = document.querySelector(".hero-bg-2");
-const heroTitle = document.querySelector(".hero-title");
-const heroSubtitle = document.querySelector(".hero-subtitle");
+
+// const heroSubtitle = document.querySelector(".hero-subtitle");
 
 
 let count = 0;
@@ -107,16 +107,16 @@ function changeHero() {
   activeBg.classList.add("inactive");
   activeBg.classList.remove("active");
 
-  heroTitle.classList.add("hide");
-  heroSubtitle.classList.add("hide");
+  // heroTitle.classList.add("hide");
+  // heroSubtitle.classList.add("hide");
 
   setTimeout(() => {
     
-  heroTitle.textContent = currentBg.title;
-  heroSubtitle.textContent = currentBg.subTitle;
 
-  heroTitle.classList.remove("hide");
-  heroSubtitle.classList.remove("hide");
+  // heroSubtitle.textContent = currentBg.subTitle;
+
+  // heroTitle.classList.remove("hide");
+  // heroSubtitle.classList.remove("hide");
 
   }, 600);
 
@@ -126,6 +126,22 @@ function changeHero() {
 
 setInterval(changeHero , 5000);
 changeHero();
+
+
+
+//hero title
+
+document.addEventListener("DOMContentLoaded", () => {
+  const heroTitle = document.getElementById("result-tours-title-h2");
+
+  const pageData = {
+    searchTitle: "ایتالیا"
+  };
+
+  if (heroTitle) {
+    heroTitle.textContent = `تورهای ${pageData.searchTitle}`;
+  }
+});
 
 // month modal
 const monthInput = document.getElementById("month-input");
