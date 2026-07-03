@@ -385,42 +385,77 @@ section {
 
  .filters {
   background: #fff;
-  border-radius: 16px;
-  padding: 16px;
+  border-radius: var(--radius-20);
+  padding:12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
   position: sticky;
   top: 10px;
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
 }
 
-.filters-header {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 14px;
-  color: #1d4ed8;
+.filter-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  width: 100%;
+
+
+
+  
+  font-size: var(--fs-7);
+  /* margin-bottom: 16px; */
+  color: var(--bg-majorelle-blue);
+  border-block-end: 1px solid var(--border-gainsboro);
+
+   
 }
+
+.filter-header-right , .filter-header-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.filters-header ion-icon {
+  font-size: var(--fs-5);
+}
+
 
 .filter-group {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  padding-top: 16px;
   gap: 12px;
 }
 
+.filter-item input {
+  width: 20px;
+  height: 50%;
+}
 
-.filter-item {
+.filter-group label {
   display: flex;
   align-items: center;
-  gap: 10px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  padding: 5px 0px;
 
-  padding: 10px 12px;
   border-radius: 10px;
 
   cursor: pointer;
   transition: 0.2s ease;
 }
 
+.filter-item:has(input:checked) {
+  background: var(--bg-lavender-blush);
+}
+
 
 .filter-item:active {
-  background: #f1f5ff;
+  background: var(--bg-lavender-blush);
 }
 
 
@@ -428,6 +463,8 @@ section {
   accent-color: #3b82f6;
   transform: scale(1.1);
 }
+
+
 
 
 .filter-item span {
