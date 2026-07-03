@@ -158,65 +158,29 @@ document.addEventListener("click", (e) => {
 });
 
 
-// Special tours
+// Special tours api
 
-const specialTours= [
-  {
-    cover: "./assets/images/specialtours/international/paris.jpg",
-    badge: "ویژه",
-    country: "تور فرانسه",
-    city: "پاریس",
-    startDate: "2025-07-22",
-    duration: "9",
-    price: "65300000"
-  },
-  {
-  cover: "./assets/images/specialtours/international/bankok.jpg",
-  badge: "ویژه",
-  country: "تور تایلند",
-  city: "بانکوک",
-  startDate: "2025-07-22",
-  duration: "9",
-  nightDuration: "8",
-  price: "76200000"
-},
-  {
-  cover: "./assets/images/specialtours/international/dubai.jpg",
-  badge: "ویژه",
-  country: "تور امارات",
-  city: "دوبی",
-  startDate: "2025-07-22",
-  duration: "9",
-  price: "58200000"
-},
-  {
-  cover: "./assets/images/specialtours/international/istanbul.jpg",
-  badge: "ویژه",
-  country: "تور ترکیه",
-  city: "استانبول",
-  startDate: "2025-07-22",
-  duration: "9",
-  price: "56700000"
-},
-  {
-  cover: "./assets/images/specialtours/international/venice.jpg",
-  badge: "ویژه",
-  country: "تور ایتالیا",
-  city: "ونیز",
-  startDate: "2025-07-22",
-  duration: "9",
-  price: "62150000"
-},
-  {
-  cover: "./assets/images/specialtours/international/antalya.jpg",
-  badge: "ویژه",
-  country: "تور ترکیه",
-  city: "آنتالیا",
-  startDate: "2025-07-22",
-  duration: "9",
-  price: "45900000"
+async function fetchSpecialTours() {
+
+  try {
+      const response= await fetch("https://velora-1-cbh9.onrender.com/api/tours/special/");
+      
+
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      return data;
+  }
+  catch (err) {
+      console.error("API Error:", err);
+      return [];
+
+  }
+  
+  
 }
-];
 
 // function generateDate(date) {
 
@@ -271,8 +235,9 @@ function durationGenerator(duration) {
 
 const toursGrid = document.querySelector(".tours-grid");
 
-function renderTours() {
+async function renderTours() {
   toursGrid.innerHTML = ``;
+  const specialTours= await fetchSpecialTours();
 
   specialTours.forEach((tour) => {
 
