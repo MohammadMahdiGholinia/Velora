@@ -4,7 +4,8 @@ from django.db.models import Q
 from .models import Tour
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import SpecialTourSerializer
+from .serializers import *
+from .services import *
 
 # Create your views here.
 
@@ -53,3 +54,22 @@ class SpecialTourListAPI(APIView):
 
         return Response(serializer.data)
 
+
+class HeroSectionAPI(APIView):
+    def get(self , request):
+        destination = request.GET.get('destination')
+
+        images = hero_section(destination)
+
+        data = {
+            "destination" : destination,
+            "heroImages"  : images,
+
+        }
+
+        serializer = HeroSectionSerializer(data)
+
+        return Response(serializer.data)
+
+
+        

@@ -17,6 +17,8 @@ urlpatterns = [
 
     
     path('api/tours/special/', views.SpecialTourListAPI.as_view(), name='tours_api'),
+    path('api/search/images/', views.HeroSectionAPI.as_view(), name='hero_section_images'),
+
 
 
     # path('autocomplete/', views.location_autocomplete, name='location_autocomplete'),

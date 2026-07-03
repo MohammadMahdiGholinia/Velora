@@ -16,4 +16,6 @@ class SpecialTourSerializer(serializers.ModelSerializer):
         fields = ['cover', 'country', 'city', 'startDate', 'duration','badge', 'price']
 
 
-    
+class HeroSectionSerializer(serializers.Serializer):
+    destination = serializers.CharField(allow_null = True)
+    heroImages = serializers.ListField(child=serializers.URLField())
