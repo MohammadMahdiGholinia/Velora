@@ -322,13 +322,13 @@ section {
 
 
 /* result Tours */
-.result-tours-title {
+/* .result-tours-title {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
   margin-bottom: 40px;
-}
+} */
 
 .result-tours-title h2 {
   font-size: var(--fs-5);
@@ -337,6 +337,12 @@ section {
 }
 
 
+.results-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 
 
 /* .result-tours-title {
@@ -344,7 +350,7 @@ section {
   align-items: center;
   justify-content: center;
   gap: 16px;
-  margin-bottom: 40px;
+  margin-bottom: 40prdx;
 }
 
 .result-tours-title h2 {
@@ -375,36 +381,104 @@ section {
 }
  */
 
+ /* filters */
 
-.tours-grid {
-
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 18px;
-  justify-content: center;
+ .filters {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 10px;
 }
-/* tour card */
-.tour-card {
-  background: var(--bg-lavender-blush);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow-2);
+
+.filters-header {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #1d4ed8;
+}
+
+.filter-group {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+}
+
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 12px;
+  border-radius: 10px;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+
+.filter-item:active {
+  background: #f1f5ff;
+}
+
+
+.filter-item input {
+  accent-color: #3b82f6;
+  transform: scale(1.1);
+}
+
+
+.filter-item span {
+  font-size: 14px;
+  color: #333;
+}
+
+.filter-item input:ckecked + span{
+  font-weight: var(--fw-bold);
+  color: var(--bg-majorelle-blue);
+}
+
+ 
+
+ .result-tours-title {
+  margin-bottom: 30px;
+ }
+
+.tours-grid {
+/* 
+  margin-top: 40px; */
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  /* justify-content: center; */
+}
+
+/* tour card */
+.tour-card-inner {
+  background: var(--bg-lavender-blush);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+  align-items: stretch;
+
+  display: grid;
+  grid-template-columns: 250px 1fr;
+
   transition:  transform .3s ease, box-shadow .3s ease;
   border: 1px solid rgb(227, 227, 227);
   /* padding: 5px; */
-  gap: 8px;
+  /* gap: 30px; */
 }
 
 
-.tour-card:hover {
+.tour-card-inner:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-2);
   
 }
-.tour-card:hover .tour-card-header-title {
+.tour-card-inner:hover .tour-card-header-title {
   color: #1d4ed8;
   transition: .3s;
 }
@@ -412,17 +486,19 @@ section {
 .tour-card-image {
   overflow: hidden;
   position: relative;
+  width: 250px;
+  height: 180px;
   
 }
 
 .tour-card-image img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
   overflow: hidden;
   transition: transform 0.5s ease;
-  /* border-top-left-radius: 20px;
-  border-top-right-radius: 20px; */  
+  display: block;
+
   
 } 
 
@@ -458,11 +534,9 @@ section {
 /* Tour card content */
 
 .tour-card-content {
-  padding: 10px;
+  padding: 16px;
   color: var(--text-gunmetal);
   background: linear-gradient(to top, #fff, #fafafa);
-    /* border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px; */
   
 }
 .tour-card-header-title {
@@ -606,6 +680,15 @@ section {
     max-width: 720px; 
   }
 
+  .filters {
+    padding: 18px;
+  }
+
+  .filter-item {
+    padding: 12px;
+    font-size: 15px;
+  }
+
 
 }
 @media (min-width: 992px) {
@@ -661,6 +744,19 @@ section {
 
   .header.active { padding-block: 15px;}
 
+  .results-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .filters {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+
 
 }
 
@@ -695,6 +791,19 @@ section {
   .navbar-list { gap: 50px;}
 
   .header-action, .header-action .loggedout, .header-action .loggedin { gap: 40px;}
+
+  .results-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .filters {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+
   
 
 
@@ -726,5 +835,19 @@ section {
   */
 
   .navbar-list { gap: 70px;}
+
+  .results-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .filters {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+
 
 }

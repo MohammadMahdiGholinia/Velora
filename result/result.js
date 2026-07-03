@@ -124,7 +124,7 @@ function changeHero() {
 }
 
 
-setInterval(changeHero , 5000);
+setInterval(changeHero , 8000);
 changeHero();
 
 
@@ -162,8 +162,7 @@ const specialTours= [
   country: "تور تایلند",
   city: "بانکوک",
   startDate: "2025-07-22",
-  duration: "9",
-  nightDuration: "8",
+  duration: "3",
   price: "76200000"
 },
   {
@@ -172,7 +171,7 @@ const specialTours= [
   country: "تور امارات",
   city: "دوبی",
   startDate: "2025-07-22",
-  duration: "9",
+  duration: "5",
   price: "58200000"
 },
   {
@@ -181,7 +180,7 @@ const specialTours= [
   country: "تور ترکیه",
   city: "استانبول",
   startDate: "2025-07-22",
-  duration: "9",
+  duration: "11",
   price: "56700000"
 },
   {
@@ -190,7 +189,7 @@ const specialTours= [
   country: "تور ایتالیا",
   city: "ونیز",
   startDate: "2025-07-22",
-  duration: "9",
+  duration: "8",
   price: "62150000"
 },
   {
@@ -199,7 +198,7 @@ const specialTours= [
   country: "تور ترکیه",
   city: "آنتالیا",
   startDate: "2025-07-22",
-  duration: "9",
+  duration: "4",
   price: "45900000"
 }
 ];
@@ -208,6 +207,42 @@ const specialTours= [
 
 //   return moment(date).format("jYYYY/jMM/jDD");
 // }
+
+
+
+// filter
+
+let filteredTours = specialTours;   //یعدا اینو بیار تو api
+
+function filterTours(type) {
+  let sorted=[...filteredTours];
+
+  if (type==="cheap") {
+    sorted.sort((a,b) => a.price - b.price);
+
+  }
+  else if (type==="expensive") {
+    sorted.sort((a,b)=> b.price - a.price)
+  }
+
+  else if (type==="duration") {
+    sorted.sort((a,b) => b.duration - a.duration);
+  }
+  else if (type==="default") {
+    sorted=[...specialTours]
+  }
+
+  filteredTours= sorted;
+  renderTours(filteredTours);
+}
+
+const sortRadios= document.querySelectorAll('input[name="sort"]');
+sortRadios.forEach(radio => {
+  radio.addEventListener("change", function() {
+    filterTours(radio.value);
+  });
+});
+
 
 
 function dateGenerator(startDate) {
@@ -257,41 +292,49 @@ function durationGenerator(duration) {
 
 const toursGrid = document.querySelector(".tours-grid");
 
-function renderTours() {
+function renderTours(filteredTours) {
   toursGrid.innerHTML = ``;
 
-  specialTours.forEach((tour) => {
+  filteredTours.forEach((tour) => {
 
     const card = document.createElement("div");
     card.classList.add("tour-card");
 
     card.innerHTML= `
     <a href="#"> 
+      <div class="tour-card-inner">
         <div class="tour-card-image">
-        <img src="${tour.cover}" alt="${tour.country}">
-        <span class="tour-card-badge"> ${tour.badge}</span>
-    </div>
+          <img src="${tour.cover}" alt="${tour.country}">
+          <span class="tour-card-badge"> ${tour.badge}</span>
+        </div>
 
-    <div class="tour-card-content">
-      <div class="tour-card-header">
-      <h3 class="tour-card-header-title">${titleGenerator(tour.country, tour.city)}</h3>
-      <div class="tour-card-header-start">
-      ${dateGenerator(tour.startDate)}
-      </div>
-      
-    </div>
+        <div class="tour-card-content">
+          <div class="tour-card-header">
+           <h3 class="tour-card-header-title">${titleGenerator(tour.country, tour.city)}</h3>
+          <div class="tour-card-header-start">
+            ${dateGenerator(tour.startDate)}
+          </div>
+        
+        </div>
 
-      <div class="tour-card-meta">
-        <div class="tour-duration"> ${durationGenerator(tour.duration)} </div>
-      </div>
-      
-  
-      <div class="tour-card-price"> 
-        <span>${new Intl.NumberFormat('fa-IR').format(tour.price)}</span> تومان
-      </div>
+        <div class="tour-card-meta">
+          <div class="tour-duration"> ${durationGenerator(tour.duration)} </div>
+        </div>
+        
     
-      <div class="tour-card-attention"><ion-icon name="alert-circle-outline"></ion-icon> شامل حمل و نقل، اقامت و خدمات تور</div>
-    </div>
+        <div class="tour-card-price"> 
+          <span>${new Intl.NumberFormat('fa-IR').format(tour.price)}</span> تومان
+        </div>
+      
+        <div class="tour-card-attention">
+          <ion-icon name="alert-circle-outline"></ion-icon> شامل حمل و نقل، اقامت و خدمات تور</div>
+      </div>
+
+
+
+      
+      
+      </div>
     </a>
 
     `;
@@ -304,4 +347,5 @@ function renderTours() {
 
 }
 
-renderTours();
+
+renderTours(filteredTours);
