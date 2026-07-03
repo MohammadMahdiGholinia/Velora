@@ -387,8 +387,8 @@ section {
   background: #fff;
   border-radius: var(--radius-20);
   padding:12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  position: sticky;
+  box-shadow:var(--shadow-1);
+  overflow: hidden;
   top: 10px;
   border: 1px solid #eee;
   transition: all 0.3s ease;
@@ -398,7 +398,6 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 12px;
   width: 100%;
 
 
@@ -407,7 +406,7 @@ section {
   font-size: var(--fs-7);
   /* margin-bottom: 16px; */
   color: var(--bg-majorelle-blue);
-  border-block-end: 1px solid var(--border-gainsboro);
+  /* border-block-end: 1px solid var(--border-gainsboro); */
 
    
 }
@@ -418,7 +417,7 @@ section {
   align-items: center;
   gap: 5px;
 }
-.filters-header ion-icon {
+.filter-toggle ion-icon {
   font-size: var(--fs-5);
 }
 
@@ -429,6 +428,10 @@ section {
   justify-content: center;
   padding-top: 16px;
   gap: 12px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: 0.3s ease;
 }
 
 .filter-item input {
@@ -448,6 +451,12 @@ section {
   cursor: pointer;
   transition: 0.2s ease;
 }
+ .filters.active .filter-group {
+    max-height: 300px;
+    opacity: 1;
+    padding-top: 16px;
+  }
+
 
 .filter-item:has(input:checked) {
   background: var(--bg-lavender-blush);

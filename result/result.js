@@ -236,6 +236,21 @@ function filterTours(type) {
   renderTours(filteredTours);
 }
 
+const filters =document.querySelector("[data-filters]");
+const filterToggle=document.querySelector("[data-filter-toggle]");
+const toggleIcon= document.querySelector(".chevron")
+
+filterToggle.addEventListener("click", ()=> {
+  filters.classList.toggle("active");
+
+  let state= filters.classList.contains("active");
+  toggleIcon.setAttribute(
+    "name",
+    state ? "chevron-up-outline" : "chevron-down-outline"
+  );
+});
+
+
 const sortRadios= document.querySelectorAll('input[name="sort"]');
 sortRadios.forEach(radio => {
   radio.addEventListener("change", function() {
