@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_jalali',
     'cloudinary',
     'rest_framework',
+    'rest_framework.authtoken',
     'cloudinary_storage',
     "corsheaders",
     'tours',
@@ -154,3 +155,9 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}

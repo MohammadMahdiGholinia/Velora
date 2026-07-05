@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone = models.TextField(max_length=11 , unique=True)
+    phone = models.CharField(max_length=11 , unique=True)
 
     def __str__(self):
         return self.phone

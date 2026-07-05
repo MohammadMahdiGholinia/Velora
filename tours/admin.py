@@ -7,6 +7,13 @@ from .models import  Tour , TourImage , City , Country
 # Register your models here.
 
 
+# Dont forget to fix the display
+
+
+
+
+
+
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
     list_display = ('name' , )
@@ -61,3 +68,4 @@ class TourAdmin(admin.ModelAdmin):
     }
 
     ordering = ('-id',)
+
