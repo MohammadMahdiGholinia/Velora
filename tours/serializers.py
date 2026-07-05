@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Tour
 
 
-class SpecialTourSerializer(serializers.ModelSerializer):
+class TourSerializer(serializers.ModelSerializer):
     country     = serializers.CharField(source='destination.country.name')
     city        = serializers.CharField(source='destination.name')
     startDate   = serializers.DateField(source='start_date')

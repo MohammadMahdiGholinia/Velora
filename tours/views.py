@@ -26,34 +26,49 @@ def tour_list(request):
 #         'external_tours': external_tours,
 #     })
 
-def tour_search(request):
-    tours = Tour.objects.filter(is_active=True)
-
-    origin = request.GET.get('origin')
-    destination = request.GET.get('destination')
-    month = request.GET.get('month')
-
-    if origin:
-        tours = tours.filter(origin_id = origin)
-
-    if destination:
-        tours = tours.filter(destination__name__icontains=destination)
-
-    if month:
-        tours = tours.filter(start_date__month = month)
-
-    return render(request, 'tours/hero-section.html' , {'tours':tours , 
-                                    'is_search' : True})
-
     
 
 class SpecialTourListAPI(APIView):
     def get(self, request):
         tours       = Tour.objects.filter(is_active=True , is_featured=True)
-        serializer  = SpecialTourSerializer(tours ,many=True)
+        serializer  = TourSerializer(tours ,many=True)
 
         return Response(serializer.data)
 
+########## تور ها رو فرانت دستی نشون بده
+# class NationalTourListAPI(APIView):
+#     def get(self, request):
+#         tours      = Tour.objects.filter(is_active=True, tour_type='external')
+#         serializer = TourSerializer(tours, many=True)
+
+#         return Response(serializer.data)
+
+# class InternalTourListAPI(APIView):
+#     def get(self, request):
+#         tours      = Tour.objects.filter(is_active=True, tour_type='internal')
+#         serializer = TourSerializer(tours, many=True)
+
+#         return Response(serializer.data)
+
+##########
+########## اگه کاربر ریکوئست بزنه
+
+# class TourListAPI(APIView):
+#     def get(self, request):
+#         tours     = Tour.objects.filter(is_active=True)
+
+#         VALID_TYPES=['internal', 'external']
+#         tour_type = request.query_params.get('type')
+
+#         if tour_type in VALID_TYPES:
+#             tours  = tours.filter(tour_type=tour_type)
+
+#         serializer = TourSerializer(tours, many=True)
+
+#         return Response(serializer.data)
+        
+
+  ##########      
 
 class HeroSectionAPI(APIView):
     def get(self , request):

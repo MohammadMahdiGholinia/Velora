@@ -7,12 +7,6 @@ from .models import  Tour , TourImage , City , Country
 # Register your models here.
 
 
-# Dont forget to fix the display
-
-
-
-
-
 
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
@@ -48,7 +42,6 @@ class TourAdmin(admin.ModelAdmin):
     list_filter = (
         'is_featured',
         'is_active',
-        'origin',
         'destination',
     )
 
