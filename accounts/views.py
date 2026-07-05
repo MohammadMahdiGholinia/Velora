@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
-from .serializers import SignupSerializer
+from .serializers import SignupSerializer, LoginSerializer
 
 class LoginView(APIView):
     def post(self, request):
