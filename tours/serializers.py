@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Tour
+from .models import Tour, TourImage
 
 
 class TourSerializer(serializers.ModelSerializer):
@@ -12,7 +12,7 @@ class TourSerializer(serializers.ModelSerializer):
 
 
     class Meta:
-        model = Tour
+        model  = Tour
         fields = ['cover', 'country', 'city', 'startDate', 'duration','badge', 'price']
 
 
@@ -33,7 +33,23 @@ class SearchSerializer(serializers.ModelSerializer):
 
     
     class Meta:
-        model = Tour
+        model  = Tour
         fields = ['cover', 'country', 'city', 'startDate', 'duration','badge', 'price']
 
+
+class TouImageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model  = TourImage
+        fields = ['images']
+
+
+class TourDetailSerializer(serializers.ModelSerializer):
+    images      = TouImageSerializer(many=True, read_only=True)
+    country     = serializers.CharField(source='destination.country.name')
+    city        = serializers.CharField(source='destination.name')
+
+    class Meta:
+        model  = Tour
+        fields = ['id', 'country', 'city', 'start_date', 'duration', 'badge', 'price', 'description', 'capacity', 'images']
 

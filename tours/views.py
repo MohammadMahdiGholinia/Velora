@@ -35,6 +35,7 @@ class SpecialTourListAPI(APIView):
 
         return Response(serializer.data)
 
+
 ########## تور ها رو فرانت دستی نشون بده
 # class NationalTourListAPI(APIView):
 #     def get(self, request):
@@ -104,7 +105,13 @@ class SearchAPI(APIView):
 
 
         
+class TourDetailAPI(APIView):
+    def get(self, request, pk):
+        tour = get_object_or_404(Tour, pk=pk, is_active=True)
 
+        serializer = TourDetailSerializer(tour)
+
+        return Response(serializer.data)
 
     
 
