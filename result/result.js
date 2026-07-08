@@ -200,6 +200,69 @@ const specialTours= [
   startDate: "2025-07-22",
   duration: "4",
   price: "45900000"
+},
+  {
+  cover: "../assets/images/specialtours/international/antalya.jpg",
+  badge: "ویژه",
+  country: "تور ترکیه",
+  city: "آنتالیا",
+  startDate: "2025-07-22",
+  duration: "4",
+  price: "45900000"
+},
+  {
+  cover: "../assets/images/specialtours/international/antalya.jpg",
+  badge: "ویژه",
+  country: "تور ترکیه",
+  city: "آنتالیا",
+  startDate: "2025-07-22",
+  duration: "4",
+  price: "45900000"
+},
+  {
+  cover: "../assets/images/specialtours/international/antalya.jpg",
+  badge: "ویژه",
+  country: "تور ترکیه",
+  city: "آنتالیا",
+  startDate: "2025-07-22",
+  duration: "4",
+  price: "45900000"
+},
+  {
+  cover: "../assets/images/specialtours/international/antalya.jpg",
+  badge: "ویژه",
+  country: "تور ترکیه",
+  city: "آنتالیا",
+  startDate: "2025-07-22",
+  duration: "4",
+  price: "45900000"
+},
+  {
+  cover: "../assets/images/specialtours/international/antalya.jpg",
+  badge: "ویژه",
+  country: "تور ترکیه",
+  city: "آنتالیا",
+  startDate: "2025-07-22",
+  duration: "4",
+  price: "45900000"
+},
+  {
+  cover: "../assets/images/specialtours/international/antalya.jpg",
+  badge: "ویژه",
+  country: "تور ترکیه",
+  city: "آنتالیا",
+  startDate: "2025-07-22",
+  duration: "4",
+  price: "45900000"
+},
+  {
+  cover: "../assets/images/specialtours/international/antalya.jpg",
+  badge: "ویژه",
+  country: "تور ترکیه",
+  city: "آنتالیا",
+  startDate: "2025-07-22",
+  duration: "4",
+  price: "45900000"
 }
 ];
 
@@ -305,12 +368,26 @@ function durationGenerator(duration) {
 //   return starsHTML;
 // }
 
+
+//animation
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target); 
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
 const toursGrid = document.querySelector(".tours-grid");
 
 function renderTours(filteredTours) {
   toursGrid.innerHTML = ``;
-
-  filteredTours.forEach((tour) => {
+  const fragment = document.createDocumentFragment();
+  filteredTours.forEach((tour, index) => {
 
     const card = document.createElement("div");
     card.classList.add("tour-card");
@@ -353,12 +430,16 @@ function renderTours(filteredTours) {
     </a>
 
     `;
-
-    toursGrid.appendChild(card);
-
-
-
+  fragment.appendChild(card);
   });
+  toursGrid.appendChild(fragment);
+  requestAnimationFrame(() => {
+    document.querySelectorAll(".tour-card").forEach(card => {
+      observer.observe(card);
+    });
+  });
+
+  
 
 }
 
