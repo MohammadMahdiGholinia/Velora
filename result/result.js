@@ -394,7 +394,7 @@ function renderTours(filteredTours) {
 
     card.innerHTML= `
     <a href="#"> 
-      <a class="tour-card-inner">
+      <div class="tour-card-inner">
         <div class="tour-card-image">
           <img src="${tour.cover}" alt="${tour.country}">
           <span class="tour-card-badge"> ${tour.badge}</span>
