@@ -28,7 +28,7 @@
 }
 
 section {
-  padding-block:var(--space-5);
+  padding-block: 0;
 }
 
 
@@ -127,7 +127,8 @@ section {
 }
 
 .header {
-  padding-block : var(--space-5);
+  padding-block-start : var(--space-5);
+  
   /* position: absolute;
   top: 0;
   left: 0; */
@@ -194,7 +195,7 @@ section {
 }
 .navbar-list {
   /* margin-block-start: 30px; */
-  padding-inline-end:var(--space-5);
+  padding-inline:var(--space-5);
   
 
 }
@@ -277,6 +278,8 @@ section {
   align-items: center;
   text-align: center;
   overflow: hidden;
+  padding-block-start : var(--space-5);
+  padding-block-end : var(--space-5);
 
   } 
 
@@ -334,6 +337,11 @@ section {
   gap: 16px;
   margin-bottom: 40px;
 } */
+
+.result-tours {
+  /* padding-block-start: var(--space-2); */
+  padding-block-end: var(--space-5);
+}
 
 .result-tours-title h2 {
   font-size: var(--fs-5);
