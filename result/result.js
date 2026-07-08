@@ -394,7 +394,7 @@ function renderTours(filteredTours) {
 
     card.innerHTML= `
     <a href="#"> 
-      <div class="tour-card-inner">
+      <a class="tour-card-inner">
         <div class="tour-card-image">
           <img src="${tour.cover}" alt="${tour.country}">
           <span class="tour-card-badge"> ${tour.badge}</span>
@@ -410,23 +410,21 @@ function renderTours(filteredTours) {
         </div>
 
         <div class="tour-card-meta">
-          <div class="tour-duration"> ${durationGenerator(tour.duration)} </div>
-        </div>
+          <div class="tour-duration"> 
+            <img class="icon" src="../assets/icon/duration.svg" height="38" alt="logo">
+            ${durationGenerator(tour.duration)} </div>
+          </div>
         
     
         <div class="tour-card-price"> 
           <span>${new Intl.NumberFormat('fa-IR').format(tour.price)}</span> تومان
         </div>
-      
-        <div class="tour-card-attention">
-          <ion-icon name="alert-circle-outline"></ion-icon> شامل حمل و نقل، اقامت و خدمات تور</div>
-      </div>
 
+          <div class="tour-card-attention">
+            <ion-icon ion-icon name="alert-circle-outline"></ion-icon>
+            شامل حمل و نقل، اقامت و خدمات تور
+            </div>
 
-
-      
-      
-      </div>
     </a>
 
     `;
