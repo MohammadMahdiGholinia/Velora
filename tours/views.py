@@ -92,8 +92,9 @@ class SearchAPI(APIView):
         origin      = request.GET.get('origin')
         destination = request.GET.get('destination')
         month       = request.GET.get('month')
+        sort        = request.GET.get('sort')
 
-        result, count = search_result(origin, destination, month)
+        result, count = search_result(origin, destination, month, sort)
         serializer    = SearchSerializer(result, many=True)
 
         data = {

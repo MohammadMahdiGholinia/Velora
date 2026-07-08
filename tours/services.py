@@ -18,7 +18,7 @@ def hero_section(destination=None):
 
 
 
-def search_result(origin, destination,  month):
+def search_result(origin, destination,  month, sort):
     if not origin and not destination and not month:
         return Tour.objects.none() , 0
 
@@ -35,6 +35,21 @@ def search_result(origin, destination,  month):
 
     if month:
         tours = tours.filter(start_date__month = month)
+
+    if sort == "cheap":
+        tours = tours.order_by('price')
+
+    if sort == "expensive":
+        tours = tours.order_by('-price')
+
+    if sort == "nearest":
+        tours = tours.order_by('start_date')
+
+    if sort == "longest":
+        tours = tours.order_by('-duration')
+
+    if sort == "shortest":
+        tours = tours.order_by('duration')
 
     count = tours.count()
 
