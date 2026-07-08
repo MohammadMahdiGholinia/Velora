@@ -36,20 +36,23 @@ def search_result(origin, destination,  month, sort):
     if month:
         tours = tours.filter(start_date__month = month)
 
-    if sort == "cheap":
+    elif sort == "cheap":
         tours = tours.order_by('price')
 
-    if sort == "expensive":
+    elif sort == "expensive":
         tours = tours.order_by('-price')
 
-    if sort == "nearest":
+    elif sort == "nearest":
         tours = tours.order_by('start_date')
 
-    if sort == "longest":
+    elif sort == "longest":
         tours = tours.order_by('-duration')
 
-    if sort == "shortest":
+    elif sort == "shortest":
         tours = tours.order_by('duration')
+    
+    elif sort == "default":
+        tours = tours.order_by('start_date')
 
     count = tours.count()
 
