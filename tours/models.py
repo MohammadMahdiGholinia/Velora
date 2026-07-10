@@ -58,6 +58,5 @@ class TourImage (models.Model):
     # images = models.ImageField(upload_to='tours/gallery')
     images = models.URLField(max_length=500) #for deploy
 
-    def __str__(self):
-        return f'گالری {self.tour.title}'
+
     
