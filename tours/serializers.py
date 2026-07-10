@@ -1,5 +1,12 @@
 from rest_framework import serializers
-from .models import Tour, TourImage
+from .models import Tour, TourImage, HeroSection
+
+
+class HomeHeroSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HeroSection
+        fields = ['images']
+
 
 
 class TourSerializer(serializers.ModelSerializer):

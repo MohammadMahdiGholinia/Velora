@@ -1,10 +1,11 @@
-from django.contrib import admin
-from django_jalali.admin.filters import JDateFieldListFilter
-from django_jalali.admin.widgets import AdminjDateWidget 
-from django_jalali.db import models as jmodels  
-import django_jalali.admin as jadmin
-from .models import  Tour , TourImage , City , Country
+from django.contrib import admin 
+from .models import  Tour , TourImage , City , Country, HeroSection
 # Register your models here.
+
+
+@admin.register(HeroSection)
+class HeroSectionAdmin(admin.ModelAdmin):
+    pass
 
 
 
@@ -29,7 +30,6 @@ class TourImageInline(admin.TabularInline):
 class TourAdmin(admin.ModelAdmin):
     inlines = [TourImageInline]
     list_display = (
-        'title',
         'origin',
         'destination',
         'price',
@@ -46,19 +46,9 @@ class TourAdmin(admin.ModelAdmin):
     )
 
     search_fields = (
-        'title',
         'description',
-        'hotel',
         'slug',
     )
-    
-    formfield_overrides = {
-        jmodels.jDateField: {'widget': AdminjDateWidget},
-    }
-
-    prepopulated_fields = {
-        'slug': ('title',)
-    }
 
     ordering = ('-id',)
 

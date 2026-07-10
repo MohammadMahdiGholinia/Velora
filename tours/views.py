@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse , JsonResponse
 from django.db.models import Q
-from .models import Tour
+from .models import Tour, HeroSection
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import *
@@ -13,18 +13,13 @@ def tour_list(request):
     return render(request, 'tours/home.html')
 
 
-# def tour_detail(request, id, slug):
-#     tour = get_object_or_404(Tour, id=id, slug=slug)
-#     images = tour.images.all()
-#     internal_tours = Tour.objects.filter(is_active=True, tour_type='internal')[:4]
-#     external_tours = Tour.objects.filter(is_active=True, tour_type='external')[:4]
+class HomeHeroSectionAPI(APIView):
+    def get(self, request):
+        hero_images = HeroSection.objects.all()
 
-#     return render(request, 'parent/tour_detail.html', {
-#         'tour': tour,
-#         'images': images,
-#         'internal_tours': internal_tours,
-#         'external_tours': external_tours,
-#     })
+        serializer = HomeHeroSerializer(hero_images, many=True)
+
+        return Response(serializer.data)
 
     
 
@@ -43,6 +38,7 @@ class SpecialTourListAPI(APIView):
 #         serializer = TourSerializer(tours, many=True)
 
 #         return Response(serializer.data)
+
 
 # class InternalTourListAPI(APIView):
 #     def get(self, request):

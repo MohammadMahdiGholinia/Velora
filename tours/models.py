@@ -3,6 +3,14 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 
+class HeroSection(models.Model):
+    images = models.URLField(max_length=500)
+
+    def __str__(self):
+        return self.images
+    
+
+
 class Country(models.Model):
     name = models.CharField(max_length=50)
 
@@ -28,16 +36,15 @@ class Tour(models.Model):
         ('internal' , 'داخلی') ,
         ('external' , 'خارجی')
     ]
-    title = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=50)
-    description = models.TextField()
+    
     origin = models.ForeignKey(City, on_delete=models.CASCADE , related_name='origin')
     destination = models.ForeignKey(City, on_delete=models.CASCADE , related_name='destination')
+    subtitle = models.CharField(max_length=100, null=True, blank=True)
+    description = models.TextField()
     badge = models.CharField(choices=Badge.choices , blank=True , null=True)
     # cover = models.ImageField(upload_to = 'tours/cover')
     cover = models.URLField(max_length=500) #for deploy
     start_date = models.DateField()
-    end_date = models.DateField()
     duration = models.PositiveIntegerField()
     price = models.PositiveIntegerField()
     capacity = models.PositiveIntegerField()
@@ -45,9 +52,6 @@ class Tour(models.Model):
     is_featured = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
-    def __str__(self):
-        return self.title
-    
 
 class TourImage (models.Model):
     tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='images')
