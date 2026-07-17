@@ -16,11 +16,12 @@ class TourSerializer(serializers.ModelSerializer):
     duration    = serializers.IntegerField()
     badge       = serializers.CharField(source='get_badge_display')
     price       = serializers.IntegerField()
+    remaining_capacity = serializers.IntegerField()
 
 
     class Meta:
         model  = Tour
-        fields = ['cover', 'country', 'city', 'startDate', 'duration','badge', 'price']
+        fields = ['cover', 'country', 'city', 'startDate', 'duration','badge', 'price', 'remaining_capacity']
 
 
 
@@ -37,11 +38,12 @@ class SearchSerializer(serializers.ModelSerializer):
     duration   = serializers.IntegerField()
     badge      = serializers.CharField(source='get_badge_display')
     price      = serializers.IntegerField()
+    remaining_capacity = serializers.IntegerField()
 
     
     class Meta:
         model  = Tour
-        fields = ['cover', 'country', 'city', 'startDate', 'duration','badge', 'price']
+        fields = ['cover', 'country', 'city', 'startDate', 'duration','badge', 'price', 'remaining_capacity']
 
 
 class TouImageSerializer(serializers.ModelSerializer):
@@ -55,8 +57,9 @@ class TourDetailSerializer(serializers.ModelSerializer):
     images      = TouImageSerializer(many=True, read_only=True)
     country     = serializers.CharField(source='destination.country.name')
     city        = serializers.CharField(source='destination.name')
+    remaining_capacity = serializers.IntegerField()
 
     class Meta:
         model  = Tour
-        fields = ['id', 'country', 'city', 'start_date', 'duration', 'badge', 'price', 'description', 'capacity', 'images']
+        fields = ['id', 'country', 'city', 'start_date', 'duration', 'badge', 'price', 'description', 'remaining_capacity', 'images']
 

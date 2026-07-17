@@ -37,8 +37,8 @@ class Tour(models.Model):
         ('external' , 'خارجی')
     ]
     
-    origin = models.ForeignKey(City, on_delete=models.CASCADE , related_name='origin')
-    destination = models.ForeignKey(City, on_delete=models.CASCADE , related_name='destination')
+    origin = models.ForeignKey(City, on_delete=models.CASCADE , related_name='origin') #on_delete=models.PROTECT
+    destination = models.ForeignKey(City, on_delete=models.CASCADE , related_name='destination') #on_delete=models.PROTECT
     subtitle = models.CharField(max_length=100, null=True, blank=True)
     description = models.TextField()
     badge = models.CharField(choices=Badge.choices , blank=True , null=True)
@@ -51,6 +51,11 @@ class Tour(models.Model):
     tour_type = models.CharField(max_length=10, choices=TOUR_TYPE , null=True , blank= True)
     is_featured = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+
+    @property
+    def remaining_capacity(self):
+        booked = self.bookings.aggregate(total=models.Sum('passengers'))['total'] or 0
+        return self.capacity - booked
 
 
 class TourImage (models.Model):
