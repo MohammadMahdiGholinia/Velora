@@ -10,7 +10,7 @@ class BookingSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'user','total_price', 'created_at']
 
     def get_user_full_name(self, obj):
-        return f'{obj.user.first_name} {obj.user.last_name}'
+        return f'{obj.user.first_name} {obj.user.last_name}' or obj.user.username
 
     def validate(self, attrs):
         tour = self.context['tour']
@@ -19,8 +19,8 @@ class BookingSerializer(serializers.ModelSerializer):
         if not tour.is_active:
             raise serializers.ValidationError("این تور فعال نیست و نمی‌توان رزرو انجام داد.")
         
-        if passengers > tour.capacity:
-            raise serializers.ValidationError("ظرفیت تور کافی نیست. لطفاً تعداد مسافران را کاهش دهید.")
+        if passengers > tour.remaining_capacity:
+            raise serializers.ValidationError("ظرفیت تور کافی نیست.")
 
         return attrs
 
