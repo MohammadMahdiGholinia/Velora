@@ -33,6 +33,7 @@ class TourAdmin(admin.ModelAdmin):
         'origin',
         'destination',
         'price',
+        'badge',
         'capacity',
         'tour_type',
         'is_featured',

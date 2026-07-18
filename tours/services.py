@@ -1,5 +1,5 @@
 from .models import Tour , TourImage
-from django.db.models import Q
+from django.db.models import Q, F
 
 def hero_section(destination=None):
     tours = Tour.objects.filter(is_active=True)
@@ -58,3 +58,14 @@ def search_result(origin, destination,  month, sort):
 
     return tours, count
     
+
+
+def get_destinations(tour_type, country=False):
+    tours = Tour.objects.filter(is_active=True, tour_type=tour_type)
+
+    if country:
+        destinations = tours.values_list('destination__country__name', flat=True).distinct()
+    else:
+        destinations = tours.values_list('destination__name', flat=True).distinct()
+
+    return destinations

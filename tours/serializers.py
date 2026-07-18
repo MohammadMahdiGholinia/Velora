@@ -24,6 +24,15 @@ class TourSerializer(serializers.ModelSerializer):
         fields = ['id', 'cover', 'country', 'city', 'startDate', 'duration','badge', 'price', 'remaining_capacity']
 
 
+class PopularTourSerializer(serializers.ModelSerializer):
+    cover = serializers.URLField()
+    destination = serializers.CharField(source='destination.name')
+    startDate = serializers.DateField(source='start_date')
+
+    class Meta:
+        model = Tour
+        fields = ['id', 'cover', 'destination', 'startDate']
+
 
 class SearchHeroSectionSerializer(serializers.Serializer):
     destination = serializers.CharField(allow_null = True)

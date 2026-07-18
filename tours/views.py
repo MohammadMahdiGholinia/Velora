@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse , JsonResponse
-from django.db.models import Q, F
+from django.db.models import Q
 from .models import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -33,24 +33,13 @@ class SpecialTourListAPI(APIView):
 
 class DestinationListAPI(APIView):
     def get(self, request):
-        external_tours = Tour.objects.filter(is_active=True, tour_type='external')
-        external_destinations = external_tours.values(dest_id=F('destination__country__id'), name=F('destination__country__name')).distinct()
-
-        internal_tours = Tour.objects.filter(is_active=True, tour_type='internal')
-        internal_destinations = internal_tours.values(dest_id=F('destination__id'), name=F('destination__name')).distinct()
-
-        one_day_tours = Tour.objects.filter(is_active=True, tour_type='one_day')
-        one_day_destinations = one_day_tours.values(dest_id=F('destination__id'), name=F('destination__name')).distinct()
-
-        icognito_tours = Tour.objects.filter(is_active=True, tour_type='icognito')
-        icognito_destinations = icognito_tours.values(dest_id=F('destination__id'), name=F('destination__name')).distinct()
-
         data = {
-            "national": list(external_destinations),
-            "internal": list(internal_destinations),
-            "one_day" : list(one_day_destinations),
-            "icognito" : list(icognito_destinations)
+            "external" : get_destinations('external', country=True),
+            "internal" : get_destinations('internal'),
+            "one_day"  : get_destinations('one_day'),
+            "icognito" : get_destinations('icognito'),
         }
+
         return Response(data)
     
 
@@ -62,6 +51,16 @@ class TourListAPI(APIView):
         serializer = TourSerializer(tours, many=True)
 
         return Response(serializer.data)
+
+
+class PopularTourListAPI(APIView):
+    def get(self, request):
+        tours = Tour.objects.filter(is_active=True, badge='popular').distinct('destination')
+
+        serializer = PopularTourSerializer(tours, many=True)
+
+        return Response(serializer.data)
+
 
 
 class SearchHeroSectionAPI(APIView):
