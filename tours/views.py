@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse , JsonResponse
+from django.db.models import Count
 from django.db.models import Q
 from .models import *
 from rest_framework.views import APIView
@@ -41,7 +42,15 @@ class DestinationListAPI(APIView):
         }
 
         return Response(data)
-    
+
+class PopularDestinationAPI(APIView):
+    def get(self, request):
+        destinations = PopularDestination.objects.annotate(tour_count=Count('city__destination'))
+        
+        serializer = PopularDestinationSerializer(destinations, many=True)
+
+        return Response(serializer.data)
+
 
 class TourListAPI(APIView):
     def get(self, request):
@@ -49,15 +58,6 @@ class TourListAPI(APIView):
         tours = Tour.objects.filter(is_active=True, destination__country__name=destination)
 
         serializer = TourSerializer(tours, many=True)
-
-        return Response(serializer.data)
-
-
-class PopularTourListAPI(APIView):
-    def get(self, request):
-        tours = Tour.objects.filter(is_active=True, badge='popular').distinct('destination')
-
-        serializer = PopularTourSerializer(tours, many=True)
 
         return Response(serializer.data)
 

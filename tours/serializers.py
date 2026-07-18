@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Tour, TourImage, HeroSection
+from .models import Tour, TourImage, HeroSection, PopularDestination
 
 
 class HomeHeroSerializer(serializers.ModelSerializer):
@@ -24,15 +24,13 @@ class TourSerializer(serializers.ModelSerializer):
         fields = ['id', 'cover', 'country', 'city', 'startDate', 'duration','badge', 'price', 'remaining_capacity']
 
 
-class PopularTourSerializer(serializers.ModelSerializer):
-    cover = serializers.URLField()
-    destination = serializers.CharField(source='destination.name')
-    startDate = serializers.DateField(source='start_date')
+class PopularDestinationSerializer(serializers.ModelSerializer):
+    city = serializers.CharField(source='city.name')
+    tour_count = serializers.IntegerField()
 
     class Meta:
-        model = Tour
-        fields = ['id', 'cover', 'destination', 'startDate']
-
+        model = PopularDestination
+        fields = ['city', 'images','tour_count']
 
 class SearchHeroSectionSerializer(serializers.Serializer):
     destination = serializers.CharField(allow_null = True)

@@ -1,5 +1,5 @@
 from django.contrib import admin 
-from .models import  Tour , TourImage , City , Country, HeroSection
+from .models import *
 # Register your models here.
 
 
@@ -17,8 +17,8 @@ class CountryAdmin(admin.ModelAdmin):
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
-    list_display = ('name' , )
-    search_fields = ('name' , )
+    list_display = ('name', 'country')
+    search_fields = ('name', 'country')
 
 
 class TourImageInline(admin.TabularInline):
@@ -48,8 +48,14 @@ class TourAdmin(admin.ModelAdmin):
 
     search_fields = (
         'description',
-        'slug',
+        'origin__name',
+        'destination__name',
     )
 
     ordering = ('-id',)
 
+
+@admin.register(PopularDestination)
+class PopularDestinationAdmin(admin.ModelAdmin):
+    list_display = ('city', 'images')
+    search_fields = ('city__name',)
