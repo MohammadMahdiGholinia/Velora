@@ -54,6 +54,16 @@ class DestinationListAPI(APIView):
         return Response(data)
     
 
+class TourListAPI(APIView):
+    def get(self, request):
+        destination = request.GET.get('destination')
+        tours = Tour.objects.filter(is_active=True, destination__country__name=destination)
+
+        serializer = TourSerializer(tours, many=True)
+
+        return Response(serializer.data)
+
+
 class SearchHeroSectionAPI(APIView):
     def get(self , request):
         destination = request.GET.get('destination')
@@ -64,7 +74,7 @@ class SearchHeroSectionAPI(APIView):
             "heroImages"  : images,
         }
 
-        serializer = HeroSectionSerializer(data)
+        serializer = SearchHeroSectionSerializer(data)
 
         return Response(serializer.data)
 
