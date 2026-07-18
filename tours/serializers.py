@@ -21,7 +21,7 @@ class TourSerializer(serializers.ModelSerializer):
 
     class Meta:
         model  = Tour
-        fields = ['cover', 'country', 'city', 'startDate', 'duration','badge', 'price', 'remaining_capacity']
+        fields = ['id', 'cover', 'country', 'city', 'startDate', 'duration','badge', 'price', 'remaining_capacity']
 
 
 
@@ -43,7 +43,7 @@ class SearchSerializer(serializers.ModelSerializer):
     
     class Meta:
         model  = Tour
-        fields = ['cover', 'country', 'city', 'startDate', 'duration','badge', 'price', 'remaining_capacity']
+        fields = ['id', 'cover', 'country', 'city', 'startDate', 'duration','badge', 'price', 'remaining_capacity']
 
 
 class TouImageSerializer(serializers.ModelSerializer):
