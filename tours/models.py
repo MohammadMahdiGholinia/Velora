@@ -34,7 +34,9 @@ class Tour(models.Model):
 
     TOUR_TYPE=[
         ('internal' , 'داخلی') ,
-        ('external' , 'خارجی')
+        ('external' , 'خارجی'),
+        ('one_day' , 'یک روزه'),
+        ('icognito' , 'ناشناس'),
     ]
     
     origin = models.ForeignKey(City, on_delete=models.CASCADE , related_name='origin') #on_delete=models.PROTECT

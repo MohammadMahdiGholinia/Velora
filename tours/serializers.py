@@ -25,7 +25,7 @@ class TourSerializer(serializers.ModelSerializer):
 
 
 
-class HeroSectionSerializer(serializers.Serializer):
+class SearchHeroSectionSerializer(serializers.Serializer):
     destination = serializers.CharField(allow_null = True)
     heroImages  = serializers.ListField(child=serializers.URLField())
 

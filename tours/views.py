@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse , JsonResponse
-from django.db.models import Q
-from .models import Tour, HeroSection
+from django.db.models import Q, F
+from .models import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import *
@@ -31,43 +31,30 @@ class SpecialTourListAPI(APIView):
         return Response(serializer.data)
 
 
-########## تور ها رو فرانت دستی نشون بده
-# class NationalTourListAPI(APIView):
-#     def get(self, request):
-#         tours      = Tour.objects.filter(is_active=True, tour_type='external')
-#         serializer = TourSerializer(tours, many=True)
+class DestinationListAPI(APIView):
+    def get(self, request):
+        external_tours = Tour.objects.filter(is_active=True, tour_type='external')
+        external_destinations = external_tours.values(dest_id=F('destination__country__id'), name=F('destination__country__name')).distinct()
 
-#         return Response(serializer.data)
+        internal_tours = Tour.objects.filter(is_active=True, tour_type='internal')
+        internal_destinations = internal_tours.values(dest_id=F('destination__id'), name=F('destination__name')).distinct()
 
+        one_day_tours = Tour.objects.filter(is_active=True, tour_type='one_day')
+        one_day_destinations = one_day_tours.values(dest_id=F('destination__id'), name=F('destination__name')).distinct()
 
-# class InternalTourListAPI(APIView):
-#     def get(self, request):
-#         tours      = Tour.objects.filter(is_active=True, tour_type='internal')
-#         serializer = TourSerializer(tours, many=True)
+        icognito_tours = Tour.objects.filter(is_active=True, tour_type='icognito')
+        icognito_destinations = icognito_tours.values(dest_id=F('destination__id'), name=F('destination__name')).distinct()
 
-#         return Response(serializer.data)
+        data = {
+            "national": list(external_destinations),
+            "internal": list(internal_destinations),
+            "one_day" : list(one_day_destinations),
+            "icognito" : list(icognito_destinations)
+        }
+        return Response(data)
+    
 
-##########
-########## اگه کاربر ریکوئست بزنه
-
-# class TourListAPI(APIView):
-#     def get(self, request):
-#         tours     = Tour.objects.filter(is_active=True)
-
-#         VALID_TYPES=['internal', 'external']
-#         tour_type = request.query_params.get('type')
-
-#         if tour_type in VALID_TYPES:
-#             tours  = tours.filter(tour_type=tour_type)
-
-#         serializer = TourSerializer(tours, many=True)
-
-#         return Response(serializer.data)
-        
-
-  ##########      
-
-class HeroSectionAPI(APIView):
+class SearchHeroSectionAPI(APIView):
     def get(self , request):
         destination = request.GET.get('destination')
         images      = hero_section(destination)
