@@ -89,6 +89,10 @@ class SearchAPI(APIView):
         month       = request.GET.get('month')
         sort        = request.GET.get('sort')
 
+        if month == 'undefined' or month == '':
+            month = None
+
+
         result, count = search_result(origin, destination, month, sort)
         serializer    = SearchSerializer(result, many=True)
 
