@@ -1,5 +1,7 @@
 from .models import Tour , TourImage
 from django.db.models import Q, F
+from datetime import datetime
+import jdatetime
 
 def hero_section(destination=None):
     tours = Tour.objects.filter(is_active=True)
@@ -34,7 +36,28 @@ def search_result(origin, destination,  month, sort):
                     )
 
     if month:
-        tours = tours.filter(start_date__month = month)
+        try:
+            month = int(month)
+            year = jdatetime.datetime.now().year
+
+            start_date = jdatetime.datetime(year, month, 1)
+
+            if month <= 6:
+                end_date = jdatetime.datetime(year, month, 31)
+            elif month <= 11:
+                end_date = jdatetime.datetime(year, month, 30)
+            else:
+                end_date = jdatetime.datetime(year, month, 29)
+
+            jalali = jdatetime.date(year, month, end_date.day)
+
+            gregorian_start = start_date.togregorian()
+            gregorian_end = jalali.togregorian()
+
+            tours = tours.filter(start_date__range=(gregorian_start, gregorian_end))
+            
+        except ValueError:
+            pass
 
     elif sort == "cheap":
         tours = tours.order_by('price')
