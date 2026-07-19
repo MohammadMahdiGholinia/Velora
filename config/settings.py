@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     "corsheaders",
     'tours',
     'accounts',
-    'bookings'
+    'bookings',
 ]
 
 MIDDLEWARE = [
@@ -162,3 +162,4 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ],
 }
+

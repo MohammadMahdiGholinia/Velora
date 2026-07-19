@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from .serializers import *
 from .services import *
 
+
 # Create your views here.
 
 def tour_list(request):
@@ -42,6 +43,7 @@ class DestinationListAPI(APIView):
         }
 
         return Response(data)
+
 
 class PopularDestinationAPI(APIView):
     def get(self, request):
@@ -78,6 +80,7 @@ class SearchHeroSectionAPI(APIView):
         return Response(serializer.data)
 
 
+
 class SearchAPI(APIView):
     def get(self, request):
         tours       =Tour.objects.filter(is_active=True)
@@ -97,7 +100,7 @@ class SearchAPI(APIView):
         return Response(data)
 
 
-        
+
 class TourDetailAPI(APIView):
     def get(self, request, pk):
         tour = get_object_or_404(Tour, pk=pk, is_active=True)
