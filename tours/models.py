@@ -5,6 +5,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 class HeroSection(models.Model):
     images = models.URLField(max_length=500)
+    title = models.CharField(max_length=100, null=True, blank=True)
+    subtitle = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return self.images
@@ -24,6 +26,16 @@ class City(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+class Category(models.Model):
+    title = models.CharField(max_length=50)
+    image = models.URLField(max_length=500)
+
+    def __str__(self):
+        return self.title
+
     
 
 class Tour(models.Model):
@@ -32,13 +44,6 @@ class Tour(models.Model):
         POPULAR = 'popular', 'محبوب',
         ECONOMY = 'economy', 'اقتصادی'
 
-    TOUR_TYPE=[
-        ('internal' , 'داخلی') ,
-        ('external' , 'خارجی'),
-        ('one_day' , 'یک روزه'),
-        ('icognito' , 'ناشناس'),
-    ]
-    
     origin = models.ForeignKey(City, on_delete=models.CASCADE , related_name='origin') #on_delete=models.PROTECT
     destination = models.ForeignKey(City, on_delete=models.CASCADE , related_name='destination') #on_delete=models.PROTECT
     subtitle = models.CharField(max_length=100, null=True, blank=True)
@@ -50,7 +55,7 @@ class Tour(models.Model):
     duration = models.PositiveIntegerField()
     price = models.PositiveIntegerField()
     capacity = models.PositiveIntegerField()
-    tour_type = models.CharField(max_length=10, choices=TOUR_TYPE , null=True , blank= True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     is_featured = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
@@ -73,7 +78,5 @@ class PopularDestination(models.Model):
 
     def __str__(self):
         return self.city.name
-
-
 
 

@@ -34,15 +34,14 @@ class SpecialTourListAPI(APIView):
 
 
 class DestinationListAPI(APIView):
-    def get(self, request):
-        data = {
-            "external" : get_destinations('external', country=True),
-            "internal" : get_destinations('internal'),
-            "one_day"  : get_destinations('one_day'),
-            "icognito" : get_destinations('icognito'),
-        }
+    def get(self , request):
+        categories = Category.objects.all()
 
-        return Response(data)
+        serializer = DestinationsSerializer(categories, many=True)
+
+        return Response(serializer.data)
+
+
 
 
 class PopularDestinationAPI(APIView):

@@ -82,13 +82,12 @@ def search_result(origin, destination,  month, sort):
     return tours, count
     
 
-
-def get_destinations(tour_type, country=False):
-    tours = Tour.objects.filter(is_active=True, tour_type=tour_type)
+def get_destinations(category, country=False):
+    tours = Tour.objects.filter(is_active=True, category=category)
 
     if country:
-        destinations = tours.values_list('destination__country__name', flat=True).distinct()
+        destinations = tours.values_list('destination__country__name',flat=True).distinct()
     else:
-        destinations = tours.values_list('destination__name', flat=True).distinct()
+        destinations = tours.values_list('destination__name',flat=True).distinct()
 
     return destinations

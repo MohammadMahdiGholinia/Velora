@@ -5,7 +5,8 @@ from .models import *
 
 @admin.register(HeroSection)
 class HeroSectionAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'images')
+    search_fields = ('title', 'subtitle')
 
 
 
@@ -20,6 +21,10 @@ class CityAdmin(admin.ModelAdmin):
     list_display = ('name', 'country')
     search_fields = ('name', 'country')
 
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title', "image" )
+    search_fields = ("title",)
 
 class TourImageInline(admin.TabularInline):
     model = TourImage
@@ -35,7 +40,6 @@ class TourAdmin(admin.ModelAdmin):
         'price',
         'badge',
         'capacity',
-        'tour_type',
         'is_featured',
         'is_active',
     )
