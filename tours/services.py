@@ -83,7 +83,7 @@ def search_result(origin, destination,  month, sort):
     
 
 def get_destinations(category, country=False):
-    tours = Tour.objects.filter(is_active=True, category=category)
+    tours = Tour.objects.filter(category=category)
 
     if country:
         destinations = tours.values_list('destination__country__name',flat=True).distinct()

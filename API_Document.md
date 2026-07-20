@@ -19,12 +19,15 @@ Base URL:
 ```json
 [
     {
-        "images": "https://example.com/image.jpg"
+        "images": "https://res.cloudinary.com/dkfvrqgkh/image/upload/v1784568070/hero1_zsdnso.jpg",
+        "title": "دنیا را ورق بزن، داستان خودت را بنویس",
+        "subtitle": "هر مقصد یک قصه دارد؛ سفر بعدی‌ات را شروع کن و خاطره‌ای تازه بساز.\""
     },
     {
-        "images": "https://example.com/image.jpg"
-    }
-    ...
+        "images": "https://res.cloudinary.com/dkfvrqgkh/image/upload/v1784567967/hero2_mshk6x.jpg",
+        "title": "جایی در دنیا منتظر توست",
+        "subtitle": "مقصد رویایی‌ات را پیدا کن و لحظه‌هایی بساز که همیشه به یاد بمانند."
+    },
 ]
 ```
 ---
