@@ -34,10 +34,24 @@ class HotelImageInline(admin.TabularInline):
     model = HotelImage
     extra = 3
 
+class ItineraryInline(admin.TabularInline):
+    model = Itinerary
+    extra = 3
+
+    formfield_overrides = {
+        models.TextField: {
+            'widget': admin.widgets.AdminTextareaWidget(
+                attrs={
+                    'rows': 2,
+                    'cols': 25
+                }
+            )
+        }
+    }
 
 @admin.register(Tour)
 class TourAdmin(admin.ModelAdmin):
-    inlines = [TourImageInline, HotelImageInline]
+    inlines = [TourImageInline, ItineraryInline ]
     list_display = (
         'origin',
         'destination',
@@ -67,3 +81,8 @@ class TourAdmin(admin.ModelAdmin):
 class PopularDestinationAdmin(admin.ModelAdmin):
     list_display = ('city', 'image')
     search_fields = ('city__name',)
+
+# @admin.register(Itinerary)
+# class ItineraryAdmin(admin.ModelAdmin):
+#     list_display = ('day', 'title')
+#     search_fields = ('day',)

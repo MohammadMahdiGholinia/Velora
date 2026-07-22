@@ -12,7 +12,8 @@ urlpatterns = [
     path('api/search/hero/', views.SearchHeroSectionAPI.as_view(),      name='hero_section_images'),
     path('api/search/result/', views.SearchAPI.as_view(),           name='search_result'),
     path('api/tour/<int:pk>/', views.TourDetailAPI.as_view(),       name='tour_detail'),
-    path('api/tour/hero/<int:pk>', views.DetailHeroSectionAPi.as_view(), name='tour_detail_herosection')
+    path('api/tour/hero/<int:pk>', views.DetailHeroSectionAPi.as_view(), name='tour_detail_herosection'),
+    path('api/tour/itinerary/<int:pk>', views.ItineraryDetailAPI.as_view(), name="itinerary")
 
 ]
 

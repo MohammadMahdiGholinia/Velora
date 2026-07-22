@@ -64,6 +64,10 @@ class Tour(models.Model):
         booked = self.bookings.aggregate(total=models.Sum('passengers'))['total'] or 0
         return self.capacity - booked
 
+    def __str__(self):
+        return f"{self.destination}, {self.duration} روزه, ({self.id})"
+    
+
 
 class TourImage (models.Model):
     tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='images')
@@ -83,4 +87,13 @@ class PopularDestination(models.Model):
     def __str__(self):
         return self.city.name
 
+
+class Itinerary(models.Model):
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE)
+    day = models.PositiveIntegerField()
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+
+    class Meta:
+        ordering = ['day']
 

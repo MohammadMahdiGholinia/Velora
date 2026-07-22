@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Tour, TourImage, HeroSection, PopularDestination, Category
+from .models import Tour, TourImage, HeroSection, PopularDestination, Category, Itinerary
 from .services import get_destinations
 
 class HomeHeroSerializer(serializers.ModelSerializer):
@@ -80,7 +80,7 @@ class TourDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model  = Tour
-        fields = ['id', 'country', 'city', 'start_date', 'duration', 'badge', 'price', 'description', 'remaining_capacity']
+        fields = ['id','subtitle','description', 'country', 'city', 'start_date', 'duration', 'badge', 'price', 'remaining_capacity']
 
 
 class DetailheroSerializer(serializers.ModelSerializer):
@@ -90,3 +90,7 @@ class DetailheroSerializer(serializers.ModelSerializer):
         model = Tour
         fields = ['id', 'badge', 'images']
 
+class ItinerarySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Itinerary
+        fields = ['day', 'title', 'description']

@@ -123,3 +123,9 @@ class DetailHeroSectionAPi(APIView):
         return Response(serializer.data)
 
 
+class ItineraryDetailAPI(APIView):
+    def get(self, request, pk):
+        itineraries = Itinerary.objects.filter(tour_id=pk)
+        serializer = ItinerarySerializer(itineraries, many = True)
+
+        return Response(serializer.data)
