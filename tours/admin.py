@@ -65,5 +65,5 @@ class TourAdmin(admin.ModelAdmin):
 
 @admin.register(PopularDestination)
 class PopularDestinationAdmin(admin.ModelAdmin):
-    list_display = ('city', 'images')
+    list_display = ('city', 'image')
     search_fields = ('city__name',)

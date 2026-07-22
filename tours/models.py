@@ -78,7 +78,7 @@ class HotelImage(models.Model):
     
 class PopularDestination(models.Model):
     city = models.OneToOneField(City, on_delete=models.CASCADE, related_name='popular_destination')
-    images = models.URLField(max_length=500)
+    image = models.URLField(max_length=500)
 
     def __str__(self):
         return self.city.name
