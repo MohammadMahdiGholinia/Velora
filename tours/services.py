@@ -15,7 +15,7 @@ def hero_section(destination=None):
         tours = tours.filter(is_featured=True)
 
 
-    images = TourImage.objects.filter(tour__in=tours).values_list("images" , flat=True)[:5]
+    images = TourImage.objects.filter(tour__in=tours).values_list("image" , flat=True)[:5]
     return list(images)
 
 
