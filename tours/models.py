@@ -44,8 +44,8 @@ class Tour(models.Model):
         POPULAR = 'popular', 'محبوب',
         ECONOMY = 'economy', 'اقتصادی'
 
-    origin = models.ForeignKey(City, on_delete=models.CASCADE , related_name='origin_tours') #on_delete=models.PROTECT
-    destination = models.ForeignKey(City, on_delete=models.CASCADE , related_name='destination_tours') #on_delete=models.PROTECT
+    origin = models.ForeignKey(City, on_delete=models.CASCADE , related_name='origin') #on_delete=models.PROTECT
+    destination = models.ForeignKey(City, on_delete=models.CASCADE , related_name='destination') #on_delete=models.PROTECT
     subtitle = models.CharField(max_length=100, null=True, blank=True)
     description = models.TextField()
     badge = models.CharField(max_length=30, choices=Badge.choices , blank=True , null=True)
