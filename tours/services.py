@@ -87,6 +87,14 @@ def get_destinations(category, country=False):
 
     if country:
         destinations = tours.values_list('destination__country__name',flat=True).distinct()
+    elif category.title == "ناشناس":
+        return [
+            "جزایر ناشناخته",
+            "جنگل های شمال",
+            "دریاچه های مخفی",
+            "روستاهای بکر",
+            "کوهستان"
+        ]
     else:
         destinations = tours.values_list('destination__name',flat=True).distinct()
 

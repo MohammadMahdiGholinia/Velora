@@ -5,7 +5,7 @@ from .services import get_destinations
 class HomeHeroSerializer(serializers.ModelSerializer):
     class Meta:
         model = HeroSection
-        fields = ['images', 'title', 'subtitle']
+        fields = ['image', 'title', 'subtitle']
 
 
 
@@ -43,7 +43,7 @@ class PopularDestinationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PopularDestination
-        fields = ['city', 'images','tour_count']
+        fields = ['city', 'image','tour_count']
 
 class SearchHeroSectionSerializer(serializers.Serializer):
     destination = serializers.CharField(allow_null = True)
@@ -70,16 +70,23 @@ class TouImageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model  = TourImage
-        fields = ['images']
+        fields = ['image']
 
 
 class TourDetailSerializer(serializers.ModelSerializer):
-    images      = TouImageSerializer(many=True, read_only=True)
     country     = serializers.CharField(source='destination.country.name')
     city        = serializers.CharField(source='destination.name')
     remaining_capacity = serializers.IntegerField()
 
     class Meta:
         model  = Tour
-        fields = ['id', 'country', 'city', 'start_date', 'duration', 'badge', 'price', 'description', 'remaining_capacity', 'images']
+        fields = ['id', 'country', 'city', 'start_date', 'duration', 'badge', 'price', 'description', 'remaining_capacity']
+
+
+class DetailheroSerializer(serializers.ModelSerializer):
+    images      = TouImageSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Tour
+        fields = ['id', 'badge', 'images']
 

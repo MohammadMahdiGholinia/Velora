@@ -5,7 +5,7 @@ from .models import *
 
 @admin.register(HeroSection)
 class HeroSectionAdmin(admin.ModelAdmin):
-    list_display = ('title', 'images')
+    list_display = ('title', 'image')
     search_fields = ('title', 'subtitle')
 
 
@@ -30,10 +30,14 @@ class TourImageInline(admin.TabularInline):
     model = TourImage
     extra = 3
 
+class HotelImageInline(admin.TabularInline):
+    model = HotelImage
+    extra = 3
+
 
 @admin.register(Tour)
 class TourAdmin(admin.ModelAdmin):
-    inlines = [TourImageInline]
+    inlines = [TourImageInline, HotelImageInline]
     list_display = (
         'origin',
         'destination',

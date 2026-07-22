@@ -72,25 +72,52 @@ Base URL:
 **Response:**
 
 ```json
-{
-    "external": [
-        "فرانسه", 
-        ...
-    ],
-    "internal": [
-        "کیش",
-        ...
-    ],
-    "one_day": [
-        "کندوان",
-        ...
-    ],
-    "icognito": [
-        "ناشناخته",
-        ...
-    ]
-}
+[
+    {
+        "id": 1,
+        "title": "داخلی",
+        "image": "https://res.cloudinary.com/dkfvrqgkh/image/upload/v1784569831/category2_nadpda.jpg",
+        "options": [
+            "اصفهان",
+            "چابهار",
+            "شیراز",
+            "قشم",
+            "کیش",
+        ]
+    },
+    {
+        "id": 2,
+        "title": "خارجی",
+        "image": "https://res.cloudinary.com/dkfvrqgkh/image/upload/v1784569755/category1_i7ifg4.jpg",
+        "options": [
+            "آلمان",
+            "اسپانیا",
+            "امارات",
+            "اندونزی",
+        ]
+    },
+    {
+        "id": 3,
+        "title": "یک روزه",
+        "image": "https://res.cloudinary.com/dkfvrqgkh/image/upload/v1784569768/category3_pkes7o.jpg",
+        "options": [
+            "آبشار لاتون",
+            "قلعه بابک",
+            "کندوان",
+        ]
+    },
+    {
+        "id": 4,
+        "title": "ناشناس",
+        "image": "https://res.cloudinary.com/dkfvrqgkh/image/upload/v1784569759/category4_iufolb.jpg",
+        "options": [
+            "جزایر ناشناخته",
+            "جنگل های شمال",
+        ]
+    }
+]
 ```
+
 ---
 ### Popular Destinations List
 **Endpoint:**
