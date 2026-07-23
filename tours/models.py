@@ -55,7 +55,8 @@ class Tour(models.Model):
     duration = models.PositiveIntegerField()
     price = models.PositiveIntegerField()
     capacity = models.PositiveIntegerField()
-    hotel = models.OneToOneField('Hotel', on_delete=models.CASCADE, null=True, blank=True)
+    hotel = models.ForeignKey("Hotel",on_delete=models.PROTECT, null=True, blank=True)
+    flight = models.ForeignKey("FlightSchedule", on_delete=models.PROTECT, related_name='tours', null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True, blank=True)
     is_featured = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -109,7 +110,7 @@ class Hotel(models.Model):
 
 class HotelImage(models.Model):
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='images', null=True, blank=True)
-    image = models.URLField( max_length=200)
+    image = models.URLField( max_length=400)
 
 class HotelFeature(models.Model):
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='features')
@@ -119,3 +120,14 @@ class HotelFacility(models.Model):
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='facilities')
     icon = models.CharField( max_length=100)
     title = models.CharField(max_length=100)
+
+
+class FlightSchedule(models.Model):
+    origin = models.ForeignKey(City, on_delete=models.CASCADE , related_name='departing_flights')
+    destination = models.ForeignKey(City, on_delete=models.CASCADE , related_name='arriving_flights')
+    departure_date = models.DateField(auto_now=False, auto_now_add=False)
+    departure_time = models.TimeField(auto_now=False, auto_now_add=False)
+    arrival_date = models.DateField(auto_now=False, auto_now_add=False)
+    arrival_time= models.TimeField(auto_now=False, auto_now_add=False)
+    airline = models.CharField(max_length=100)
+    number = models.CharField( max_length=50)

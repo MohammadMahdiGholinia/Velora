@@ -8,7 +8,6 @@ class HomeHeroSerializer(serializers.ModelSerializer):
         fields = ['image', 'title', 'subtitle']
 
 
-
 class TourSerializer(serializers.ModelSerializer):
     country     = serializers.CharField(source='destination.country.name')
     city        = serializers.CharField(source='destination.name')
@@ -77,6 +76,8 @@ class TourDetailSerializer(serializers.ModelSerializer):
     country     = serializers.CharField(source='destination.country.name')
     city        = serializers.CharField(source='destination.name')
     remaining_capacity = serializers.IntegerField()
+    badge      = serializers.CharField(source='get_badge_display')
+
 
     class Meta:
         model  = Tour
@@ -127,3 +128,34 @@ class HotelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotel
         fields = ['title', 'description', 'location', 'stars', 'features', 'facilities', 'images']
+
+
+class DpartureDatesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FlightSchedule
+        fields = ['departure_date', 'departure_time', 'arrival_date', 'arrival_time']
+
+class DepartureFlightSerializer(serializers.ModelSerializer):
+    origin = serializers.CharField(source='destination.name')
+    destination = serializers.CharField(source='origin.name')
+    class Meta:
+        model = FlightSchedule
+        fields = ['departure_date','departure_time', 'origin', 'destination', 'airline', 'number' ]
+
+class ArrivalFlightSerializer(serializers.ModelSerializer):
+    origin = serializers.CharField(source='destination.name')
+    destination = serializers.CharField(source='origin.name')
+    class Meta:
+        model = FlightSchedule
+        fields = ['arrival_date', 'arrival_time', 'origin', 'destination', 'airline', 'number' ]
+
+
+class FlightSerializer(serializers.ModelSerializer):
+    dates = DpartureDatesSerializer(source='*')
+    departure_flight = DepartureFlightSerializer(source='*')
+    arrival_flight = ArrivalFlightSerializer(source='*')
+
+    class Meta:
+        model = FlightSchedule
+        fields = ['dates', 'departure_flight', 'arrival_flight']
+

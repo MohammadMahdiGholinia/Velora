@@ -73,5 +73,3 @@ class SignupSerializer(serializers.Serializer):
 
         return user
         
-
-            

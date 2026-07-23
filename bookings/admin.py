@@ -9,12 +9,10 @@ class BookingAdmin(admin.ModelAdmin):
         'tour',
         'passengers',
         'total_price',
-        'status',
         'created_at',
     )
     list_filter = (
-        'status',
-        'created_at',
+       'created_at',
     )
     search_fields = (
         'user__username',

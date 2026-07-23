@@ -97,3 +97,7 @@ class HotelAdmin(admin.ModelAdmin):
     list_filter = ('city', 'stars')
     search_fields = ('title',)
 
+@admin.register(FlightSchedule)
+class FlightScheduleAdmin(admin.ModelAdmin):
+    list_display = ('airline', 'origin', 'destination', )
+    

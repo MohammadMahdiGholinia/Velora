@@ -43,9 +43,6 @@ class SignupView(APIView):
 
 
 
-        
-
-
 
 
 # def signup_view(request):

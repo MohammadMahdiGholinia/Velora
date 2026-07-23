@@ -6,16 +6,14 @@ from django.core.validators import MinValueValidator
 # Create your models here.
 
 class Booking(models.Model):
-    class Status(models.TextChoices):
-        PENDING = 'PENDING', 'در انتظار پرداخت'
-        CONFIRMED = 'CONFIRMED', 'تایید شده'
-        CANCELLED = 'CANCELLED', 'لغو شده'
-
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='bookings') #on_delete=models.PROTECT
-    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='bookings') #on_delete=models.PROTECT
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='bookings') 
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='bookings')
+    name = models.CharField(max_length=100, null=True, blank=True)
+    national_code = models.CharField(max_length=50, null=True, blank=True)
+    phone = models.CharField(max_length=50, null=True, blank=True)
     passengers = models.PositiveIntegerField(validators=[MinValueValidator(1)] )
+    email = models.EmailField( max_length=254, null=True, blank=True)
     total_price = models.DecimalField(max_digits=15, decimal_places=0)
-    status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
