@@ -6,7 +6,7 @@ from django.core.validators import MinValueValidator
 # Create your models here.
 
 class Booking(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='bookings') 
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='bookings', null=True, blank=True) 
     tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='bookings')
     name = models.CharField(max_length=100, null=True, blank=True)
     national_code = models.CharField(max_length=50, null=True, blank=True)

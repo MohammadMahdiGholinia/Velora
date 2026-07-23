@@ -6,9 +6,8 @@ from .serializers import BookingSerializer
 
 
 class BookingCreateAPI(APIView):
-
-    permission_classes = [IsAuthenticated]
     def post(self, request, tour_id):
+        permission_classes = [AllowAny]
         tour = Tour.objects.get(id=tour_id)
 
 

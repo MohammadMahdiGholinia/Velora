@@ -16,6 +16,5 @@ urlpatterns = [
     path('api/tour/itinerary/<int:pk>', views.ItineraryDetailAPI.as_view(), name="itinerary"),
     path('api/hotel/<int:pk>', views.HotelAPI.as_view(), name='hotel'),
     path('api/flight/<int:pk>', views.FlightAPI.as_view(), name='flight')
-
 ]
 

@@ -20,17 +20,18 @@ class BookingSerializer(serializers.ModelSerializer):
         ]
 
     def create(self, validated_data):
-
-        user = self.context['request'].user
+        request = self.context['request']
         tour = self.context['tour']
-
+    
+        user = request.user if request.user.is_authenticated else None
+    
         passengers = validated_data['passengers']
-
+    
         booking = Booking.objects.create(
             user=user,
             tour=tour,
             total_price=tour.price * passengers,
             **validated_data
         )
-
+    
         return booking
