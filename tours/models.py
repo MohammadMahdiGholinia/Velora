@@ -9,7 +9,7 @@ class HeroSection(models.Model):
     subtitle = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
-        return self.images
+        return self.image
     
 
 
@@ -55,6 +55,7 @@ class Tour(models.Model):
     duration = models.PositiveIntegerField()
     price = models.PositiveIntegerField()
     capacity = models.PositiveIntegerField()
+    hotel = models.OneToOneField('Hotel', on_delete=models.CASCADE, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True, blank=True)
     is_featured = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -65,7 +66,7 @@ class Tour(models.Model):
         return self.capacity - booked
 
     def __str__(self):
-        return f"{self.destination}, {self.duration} روزه, ({self.id})"
+        return f"{self.destination} - {self.duration} روزه - ({self.id})"
     
 
 
@@ -73,10 +74,6 @@ class TourImage (models.Model):
     tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='images')
     # images = models.ImageField(upload_to='tours/gallery')
     image = models.URLField(max_length=500) #for deploy
-
-class HotelImage(models.Model):
-    tour = models.ForeignKey(Tour, on_delete=models.CASCADE)
-    image = models.URLField( max_length=200)
 
 
     
@@ -89,7 +86,7 @@ class PopularDestination(models.Model):
 
 
 class Itinerary(models.Model):
-    tour = models.ForeignKey(Tour, on_delete=models.CASCADE)
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='itineraries')
     day = models.PositiveIntegerField()
     title = models.CharField(max_length=100)
     description = models.TextField()
@@ -97,3 +94,28 @@ class Itinerary(models.Model):
     class Meta:
         ordering = ['day']
 
+class Hotel(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    address = models.CharField(max_length=250)
+    stars = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+
+    def __str__(self):
+        return self.title
+    
+
+
+class HotelImage(models.Model):
+    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='images', null=True, blank=True)
+    image = models.URLField( max_length=200)
+
+class HotelFeature(models.Model):
+    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='features')
+    title = models.CharField(max_length=150)
+
+class HotelFacility(models.Model):
+    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='facilities')
+    icon = models.CharField( max_length=100)
+    title = models.CharField(max_length=100)

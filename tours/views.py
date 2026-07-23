@@ -129,3 +129,12 @@ class ItineraryDetailAPI(APIView):
         serializer = ItinerarySerializer(itineraries, many = True)
 
         return Response(serializer.data)
+
+class HotelAPI(APIView):
+    def get (self, request, pk):
+        tour = get_object_or_404(Tour, pk=pk, is_active=True)
+        hotel = tour.hotel
+
+        serializer = HotelSerializer(hotel)
+
+        return Response(serializer.data)

@@ -30,10 +30,6 @@ class TourImageInline(admin.TabularInline):
     model = TourImage
     extra = 3
 
-class HotelImageInline(admin.TabularInline):
-    model = HotelImage
-    extra = 3
-
 class ItineraryInline(admin.TabularInline):
     model = Itinerary
     extra = 3
@@ -69,7 +65,6 @@ class TourAdmin(admin.ModelAdmin):
     )
 
     search_fields = (
-        'description',
         'origin__name',
         'destination__name',
     )
@@ -82,7 +77,23 @@ class PopularDestinationAdmin(admin.ModelAdmin):
     list_display = ('city', 'image')
     search_fields = ('city__name',)
 
-# @admin.register(Itinerary)
-# class ItineraryAdmin(admin.ModelAdmin):
-#     list_display = ('day', 'title')
-#     search_fields = ('day',)
+
+class HotelImageInline(admin.TabularInline):
+    model = HotelImage
+    extra = 3
+
+class FeatureInline(admin.TabularInline):
+    model = HotelFeature
+    extra = 3
+
+class FacilityInline(admin.TabularInline):
+    model = HotelFacility
+    extra = 3
+
+@admin.register(Hotel)
+class HotelAdmin(admin.ModelAdmin):
+    inlines = [HotelImageInline, FeatureInline, FacilityInline]
+    list_display = ('title', 'city', 'stars')
+    list_filter = ('city', 'stars')
+    search_fields = ('title',)
+

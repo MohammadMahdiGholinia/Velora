@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Tour, TourImage, HeroSection, PopularDestination, Category, Itinerary
+from .models import *
 from .services import get_destinations
 
 class HomeHeroSerializer(serializers.ModelSerializer):
@@ -94,3 +94,36 @@ class ItinerarySerializer(serializers.ModelSerializer):
     class Meta:
         model = Itinerary
         fields = ['day', 'title', 'description']
+
+class HotelImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HotelImage
+        fields = ['image']
+
+class HotelLocationSerializer(serializers.ModelSerializer):
+    country = serializers.CharField(source='country.name')
+    city = serializers.CharField(source='city.name')
+
+    class Meta:
+        model = Hotel
+        fields = ['country','city', 'address']
+
+
+class HotelFacilitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HotelFacility
+        fields = ['icon', 'title']
+
+class HotelSerializer(serializers.ModelSerializer):
+    location = HotelLocationSerializer(source='*')
+    images = HotelImageSerializer(many=True, read_only=True)
+    features = serializers.SerializerMethodField()
+    facilities = HotelFacilitySerializer(many=True, read_only=True)
+
+    def get_features(self, obj):
+        return obj.features.values_list('title', flat=True)
+
+    
+    class Meta:
+        model = Hotel
+        fields = ['title', 'description', 'location', 'stars', 'features', 'facilities', 'images']
