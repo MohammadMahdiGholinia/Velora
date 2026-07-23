@@ -55,6 +55,7 @@ class Tour(models.Model):
     duration = models.PositiveIntegerField()
     price = models.PositiveIntegerField()
     capacity = models.PositiveIntegerField()
+    meals = models.CharField(max_length=50, null=True, blank=True)
     hotel = models.ForeignKey("Hotel",on_delete=models.PROTECT, null=True, blank=True)
     flight = models.ForeignKey("FlightSchedule", on_delete=models.PROTECT, related_name='tours', null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True, blank=True)
