@@ -14,6 +14,12 @@ from .services import *
 def tour_list(request):
     return render(request, 'index.html')
 
+def tour_search(request):
+    return render(request, 'result.html')
+
+def detail_page(request):
+    return render(request, "details.html")
+
 
 class HomeHeroSectionAPI(APIView):
     def get(self, request):
@@ -138,7 +144,8 @@ class HotelAPI(APIView):
         serializer = HotelSerializer(hotel)
 
         return Response(serializer.data)
-\
+
+
 class FlightAPI(APIView):
     def get (self, request, pk):
         tour = get_object_or_404(Tour, pk=pk, is_active=True)

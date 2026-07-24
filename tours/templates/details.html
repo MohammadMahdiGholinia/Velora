@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -6,14 +7,14 @@
   <meta name="description" content="Velora یک وب‌سایت مدرن برای جستجو و رزرو تورهای گردشگری است که به کاربران کمک می‌کند سفرهای خاص و به‌یادماندنی خود را برنامه‌ریزی کنند.">
   <meta name="title" content="Velora | رزرو تور و تجربه‌های خاص سفر">
   <title>Velora | رزرو تور و تجربه‌های خاص سفر</title>
-  <link rel="icon" href="../assets/images/temp-logo.svg">
-  <link rel="stylesheet" href="../style/reset-variables.css">
-  <link rel="stylesheet" href="../component/footer/footer.css">
-  <link rel="stylesheet" href="../component/header/resultHeader.css">
+  <link rel="icon" href="{% static "assets/images/temp-logo.svg" %}">
+  <link rel="stylesheet" href="{% static 'css/style/reset-variables.css' %}">
+  <link rel="stylesheet" href="{% static 'css/footer/footer.css' %}">
+  <link rel="stylesheet" href="{% static 'css/header/resultHeader.css' %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./details.css">
+  <link rel="stylesheet" href="{% static "css/details.css" %}">
 
 </head>
 <body>
@@ -913,7 +914,7 @@
 
   <script type="module" src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
-  <script src="./details.js" defer></script>
+  <script src="{% static "js/details.js" %}" defer></script>
 
 </body>
 </html>

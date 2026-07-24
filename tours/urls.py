@@ -4,6 +4,8 @@ from . import views
 
 urlpatterns = [
     path('' , views.tour_list, name='Home'),
+    path('search/', views.tour_search, name='search'),
+    path("details/", views.detail_page),
     path('api/home/hero/', views.HomeHeroSectionAPI.as_view(), name='home_herosection'),
     path('api/tours/special/', views.SpecialTourListAPI.as_view(),  name='tours_api'),
     path('api/destinations/', views.DestinationListAPI.as_view(),     name='destination_list'),

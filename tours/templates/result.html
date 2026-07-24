@@ -7,15 +7,16 @@
   <meta name="description" content="Velora یک وب‌سایت مدرن برای جستجو و رزرو تورهای گردشگری است که به کاربران کمک می‌کند سفرهای خاص و به‌یادماندنی خود را برنامه‌ریزی کنند.">
   <meta name="title" content="Velora | رزرو تور و تجربه‌های خاص سفر">
   <title>Velora | رزرو تور و تجربه‌های خاص سفر</title>
-  <link rel="icon" href="../assets/images/temp-logo.svg">
-  <link rel="stylesheet" href="../style/reset-variables.css">
-  <link rel="stylesheet" href="../component/footer/footer.css">
-  <link rel="stylesheet" href="../component/header/homeHeader.css">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="{% static 'assets/images/temp-logo.svg' %}">
+  <link rel="stylesheet" href="{% static 'css/style/reset-variables.css' %}">
+  <link rel="stylesheet" href="{% static 'css/footer/footer.css' %}">
+  <link rel="stylesheet" href="{% static 'css/header/resultHeader.css' %}">
+  <link rel="stylesheet" href="{% static 'css/result.css' %}">
 
 </head>
 <body>
-  <div id="preloader"></div>
+  <div id="preloader">
+  </div>
 
 
 <!-- HEADER -->
@@ -29,7 +30,7 @@
     <nav class="navbar" data-nav>
       <div class="navbar-top">
         <a href="#" class="logo">
-          <img src="../assets/images/temp-logo.svg" height="38" alt="logo">
+          <img src="{% static "assets/images/temp-logo.svg" %}}" height="38" alt="logo">
         </a>
 
         <button class="nav-toggle-btn" aria-label="close menu" data-nav-toggler>
@@ -106,20 +107,18 @@
   </div>
 </header>
 
+<!--  Main-->
+
 <main>
    <!-- Hero Section-->
-     <section class="hero" data-hero>
+    <section class="hero" data-hero>
+      <div class="container">
+        <div class="hero-bg hero-bg-fallback active"></div>
+        <div class="hero-bg hero-bg-api"></div>
+        <div class="hero-bg hero-bg-api"></div>
 
-       <div class="hero-bg hero-bg-1"></div>
-      <div class="hero-bg hero-bg-2"></div>
-
-         <div class="hero-overlay"></div>
-          <div class="hero-content container">
-             <h1 class="hero-title"> دنیا منتظر توست </h1>
-             <p class="hero-subtitle"> سفر بعدی‌ات را همین حالا پیدا کن </p>
-           </div> 
-           
-           <div class="hero-search container">
+        <div class="hero-overlay"></div>
+        <div class="hero-search">
 
             <form class="hero-search-box" id="search-form">
 
@@ -136,7 +135,7 @@
               <div class="hero-field month-field">
                 <label for="month-input"> تاریخ</label>
                 <input id="month-input" name="month" readonly>
-                              <div id="month-modal" class="month-modal">
+                <div id="month-modal" class="month-modal">
                 <button type="button" class="month-button" data-month="01"> فروردین</button>
                 <button type="button" class="month-button" data-month="02"> اردیبهشت</button>
                 <button type="button" class="month-button" data-month="03"> خرداد</button>
@@ -154,316 +153,115 @@
                 
               </div>
               
-              <button type="submit" class="search-btn btn">
-                <span>جستجو</span>
+              <button type="submit" class="search-btn btn"> 
+                 
+                 <span>جستجو</span>
                  <ion-icon name="search-outline"></ion-icon>
               </button>
 
-
+              
 
           
             </form>
            </div>
-           
 
-      </section>
-
-      <!-- category -->
-      <section class="tour-categories">
-
-        <div class="container">
-
-
-          <div class="section-header">
-
-            <div class="section-title">
-
-              <span class="right"></span>
-
-              <h2>
-               هر سفر، یک حال و هوای متفاوت
-              </h2>
-
-              <span class="left"></span>
-
-            </div>
-            
-
-
-            <p class="section-description">
-   هر سلیقه‌ای که داشته باشی، در ولورا می‌توانی سفر مناسب خودت را پیدا کنی؛ از تورهای داخلی و خارجی گرفته تا سفرهای یک‌روزه و تجربه‌های ناشناخته.
-            </p>
-
-
-          </div>
-
-
-
-          <div class="categories-grid">
-
-
-          </div>
-
-
-        </div>
-
-
-      </section>
-
-
-<!-- special tours -->
-      <section class="special-tours">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-header-top">
-              <div class="section-title">
-                <span class="right"></span>
-                <h2>
-                  تور‌های ویژه ولورا
-                </h2>
-                <span class="left"></span>
-              </div>
-
-              
-            </div>
-
-            <div class="section-description">
-              <p>
-                بهترین تورهای منتخب با قیمت‌های ویژه و خدمات کامل؛ فرصت‌هایی که نباید از دست بدهی.
-              </p>
-              <div class="slider-arrows" data-slider-arrows>
-                <button type="button" class="slider-arrow slider-arrow--prev" aria-label="قبلی">
-                  <ion-icon name="chevron-back-outline"></ion-icon>
-                </button>
-                <button type="button" class="slider-arrow slider-arrow--next" aria-label="بعدی">
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                </button>
-              </div>
-              
-              
-
-
-
-
-            </div>
-            
-            
-          </div>
-
-
-          <div class="tours-grid">
-
-          </div>
-
-
-        </div>
-
-      </section>
-
-      <!-- popular destination -->
-
-
-      <section class="popular-destinations">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-header-top">
-              <div class="section-title">
-                <span class="right"></span>
-                <h2>
-                  مقصدهای محبوب
-                </h2>
-                <span class="left"></span>
-              </div>
-
-            </div>
-
-            <div class="section-description">
-              <p>
-                از سواحل آرام تا شهرهای پرجنب‌وجوش؛ محبوب‌ترین مقصدها منتظر تو هستند.
-              </p>
-              <div class="slider-arrows" data-slider-arrows>
-                <button type="button" class="slider-arrow slider-arrow--prev" aria-label="قبلی">
-                  <ion-icon name="chevron-back-outline"></ion-icon>
-                </button>
-                <button type="button" class="slider-arrow slider-arrow--next" aria-label="بعدی">
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                </button>
-              </div>
-            </div>
-            
-          </div>
-          <div class="destinations-grid">
-          </div>
-        </div>
-
-      </section>
-
-      <!-- why velors -->
-
-      <section class="why-velora">
-
-  <div class="container">
-
-    <div class="section-header">
-
-      <div class="section-title">
-        <span class="right"></span>
-
-        <h2>
-        ولورا؛ انتخابی برای سفرهای خاطره‌انگیز
-        </h2>
-
-        <span class="left"></span>
-      </div>
-
-      <p class="section-description">
-        هر سفر با یک تصمیم کوچک شروع می‌شود؛ تصمیمی برای دیدن جاهای تازه، ساختن خاطره‌های جدید و فاصله گرفتن از روزمرگی. در ولورا تلاش کرده‌ایم این شروع را برایت ساده‌تر کنیم. از پیدا کردن مقصد مناسب و مقایسه تورها گرفته تا رزرو سفر، همه چیز طوری طراحی شده که با خیال راحت فقط روی هیجان سفر تمرکز کنی. فرقی نمی‌کند رویای قدم زدن در خیابان‌های یک شهر خارجی را داشته باشی یا بخواهی زیبایی‌های ایران را کشف کنی؛ ولورا کنار توست تا سفر بعدی‌ات راحت‌تر، مطمئن‌تر و لذت‌بخش‌تر از همیشه آغاز شود.
-      </p>
-
-    </div>
-
-
-
-    <div class="features-grid">
-
-
-      <article class="feature-card reveal-item">
-
-        <div class="feature-icon">
-          <ion-icon name="airplane-outline"></ion-icon>
-        </div>
-
-        <h3>
-         تنوع بی‌نظیر تورها
-        </h3>
-
-        <p>
-          مجموعه‌ای از بهترین تورهای داخلی و خارجی برای هر سلیقه.
-        </p>
-
-      </article>
-
-
-
-
-      <article class="feature-card reveal-item">
-
-        <div class="feature-icon">
-          <ion-icon name="shield-checkmark-outline"></ion-icon>
-        </div>
-
-        <h3>
-          رزرو مطمئن
-        </h3>
-
-        <p>
-          اطلاعات شفاف، پرداخت امن و پشتیبانی در تمام مراحل سفر.
-        </p>
-
-      </article>
-
-
-
-
-
-      <article class="feature-card reveal-item">
-
-        <div class="feature-icon">
-          <ion-icon name="search-outline"></ion-icon>
-        </div>
-
-        <h3>
-          جستجوی آسان
-        </h3>
-
-        <p>
-         تور دلخواهت را در چند ثانیه پیدا کن.
-        </p>
-
-      </article>
-
-
-
-
-
-      <article class="feature-card reveal-item">
-
-        <div class="feature-icon">
-          <ion-icon name="heart"></ion-icon>
-        </div>
-
-        <h3>
-          پشتیبانی همراه شما
-        </h3>
-
-        <p>
-         در هر مرحله از سفر، کنار تو هستیم.
-        </p>
-
-      </article>
-
-
-
-    </div>
-
-  </div>
-
-      </section>
-
-      <!-- reviews
-
-      <section class="reviews">
-
-  <div class="container">
-
-
-    <div class="section-header">
-
-      <div class="section-title">
-
-        <span class="right"></span>
-
-        <h2>
-        تجربه سفر با ولورا، از زبان مسافران
-        </h2>
-
-        <span class="left"></span>
 
       </div>
-
-
-      <p class="section-description">
-       این‌ها روایت مسافرانی است که ولورا را برای سفرشان انتخاب کردند و با خاطره‌هایی شیرین، تجربه‌ای ماندگار برای خود ساختند.
-      </p>
-
-    </div>
-
-
-
-    <div class="reviews-grid">
-
-    </div>
-
-
-  </div>
-
-
-      </section> -->
+    
+    </section>
 
 
 
 
+    <!-- results -->
+      <section class="result-tours">
+
+        <div class="container">
+          <div class="result-tours-title">
+            <h2 id="result-tours-title-h2"></h2>
+          </div>
+
+          <div class="results-layout">
+
+            <aside class="filters active" data-filters>
+
+              <button class="filter-toggle" data-filter-toggle>
+                <div class="filter-header-right">
+                  <ion-icon name="options-outline"></ion-icon>
+                  <h3>مرتب سازی</h3>
+                </div>
+                <ion-icon class="chevron" name="chevron-down-outline"></ion-icon>
+                
+
+              </button>
+        
+
+              <div class="filter-group">
+
+                <label class="filter-item">
+                  <input type="radio" name="sort" value="default" checked>
+                  <span>پیش فرض</span>
+                </label>
+
+                <label class="filter-item">
+                  <input type="radio" name="sort" value="cheap">
+                  <span>ارزان ترین قیمت</span>
+                </label>
+
+                <label  class="filter-item">
+                  <input type="radio" name="sort" value="expensive">
+                  <span>گران ترین قیمت</span>
+                </label>
+                <label  class="filter-item">
+                  <input type="radio" name="sort" value="longest">
+                  <span>بیشترین مدت زمان</span>
+                </label>
+                <label  class="filter-item">
+                  <input type="radio" name="sort" value="shortest">
+                  <span>کمترین مدت زمان</span>
+                </label>
+                <label  class="filter-item">
+                  <input type="radio" name="sort" value="nearest">
+                  <span>نزدیک ترین تورها </span>
+                </label>
+
+
+              </div>
+
+
+
+            </aside>
+              
+
+            <div class="tours-container">
+              <div class="api-loader">
+                <img src="{% static "assets/images/loading.svg" %}}" alt="loading">
+              </div>
+
+              <div class="tours-grid"></div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+        
 
 
 
 
 
 
+
+
+
+      </section>
 
 
 
 </main>
-
 
 <!--  Footer-->
 <footer class="footer">
@@ -594,8 +392,12 @@
 
 
 
-<script type="module" src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
-  <script src="./home.js"></script>
+
+
+
+  <script type="module" src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
+
+  <script nomodule src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
+  <script src="{% static 'js/result.js' %}" defer></script>
 </body>
 </html>

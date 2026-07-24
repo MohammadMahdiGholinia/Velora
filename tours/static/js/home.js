@@ -117,7 +117,7 @@ function renderNavbarCategories(categories){
         <ion-icon name="earth-outline"></ion-icon>
 
         <a 
-        href="../result/result.html?destination=${encodeURIComponent(option)}"
+        href="/search/?destination=${encodeURIComponent(option)}"
         class="submenu-link">
 
           ${option}
@@ -506,8 +506,7 @@ searchForm.addEventListener("submit", function(event) {
   if (destination) params.append("destination", destination);
   if (month) params.append("month", month);
 
-  window.location.href=`../result/result.html?${params.toString()}`;
-
+  window.location.href=`/search/?${params.toString()}`;
 
 
 
@@ -567,9 +566,7 @@ function renderPopularDestinations(destinations){
 
   card.innerHTML=`
 
-  <a href="../result/result.html?destination=${encodeURIComponent(destination.city)}" class="destination-link">
-
-  <img src="${destination.image}"
+  <a href="/search/?destination=${encodeURIComponent(destination.city)}" class="destination-link">
   alt="${destination.name}">
 
 
@@ -675,7 +672,7 @@ function renderCategories(categories){
 
             <div class="category-options">
               ${category.options.map(option=>`
-                <a href="../result/result.html?destination=${encodeURIComponent(option)}">
+                <a href="/search/?destination=${encodeURIComponent(option)}">
                         ${option}
                     </a>
                     `).join("")

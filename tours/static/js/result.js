@@ -100,7 +100,7 @@ submenuItems.forEach((item) => {
     li.classList.add("submenu-item");
 
    li.innerHTML = `
-      <a href="../result/result.html?destination=${encodeURIComponent(option)}"
+      <a href="/search/?destination=${encodeURIComponent(option)}"
         class="submenu-link">
         ${option}
       </a>`;
@@ -560,9 +560,9 @@ detailButtons.forEach(button => {
 
 
 
-    window.location.href =
-    `../details/details.html?${params.toString()}`;
 
+    window.location.href =
+    `/details/?${params.toString()}`;
 
   });
 
@@ -599,8 +599,7 @@ if(month){
     params.append("month", month);
 }
 
-  window.location.href=`../result/result.html?${params.toString()}`;
-
+window.location.href=`/search/?${params.toString()}`;
 
 
 
