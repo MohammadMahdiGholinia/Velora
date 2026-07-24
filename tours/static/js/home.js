@@ -567,8 +567,7 @@ function renderPopularDestinations(destinations){
   card.innerHTML=`
 
   <a href="/search/?destination=${encodeURIComponent(destination.city)}" class="destination-link">
-  alt="${destination.name}">
-
+  <img src="${destination.image}" alt="${destination.city}">
 
   <div class="destination-overlay">
     <div class="destination-info">
