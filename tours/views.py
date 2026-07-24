@@ -12,7 +12,7 @@ from .services import *
 # Create your views here.
 
 def tour_list(request):
-    return render(request, 'tours/home.html')
+    return render(request, 'index.html')
 
 
 class HomeHeroSectionAPI(APIView):

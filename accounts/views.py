@@ -38,7 +38,7 @@ class SignupView(APIView):
         return Response({
             'token' : token.key,
             'message' : 'ثبت نام با موفقیت انجام شد'
-        } , status=status.HTTP_201_CREATED)
+        } , statu=status.HTTP_201_CREATED)
 
 
 
